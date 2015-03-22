@@ -10,6 +10,7 @@ gem 'jbuilder', '~> 2.0'
 gem 'angular-rails-templates'
 gem 'ngannotate-rails'
 gem 'coffee-rails', '~> 4.0.1'
+gem "slim-rails"
 
 gem 'sdoc', '~> 0.4.0',        group: :doc
 
