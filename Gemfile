@@ -9,6 +9,7 @@ gem 'uglifier', '>= 1.3.0'
 gem 'jbuilder', '~> 2.0'
 gem 'angular-rails-templates'
 gem 'ngannotate-rails'
+gem 'coffee-rails', '~> 4.0.1'
 
 gem 'sdoc', '~> 0.4.0',        group: :doc
 
