@@ -6,4 +6,11 @@ html
     = javascript_include_tag 'application'
     = csrf_meta_tags
   body ng-app="SimpleTask"
-    ui-view
+
+    .header-container.container-fluid
+  	  div ng-include="'common/_header.html'"
+    .main-container.container
+      ui-view
+    .footer-container.container-fluid
+      div ng-include="'common/_footer.html'"
+

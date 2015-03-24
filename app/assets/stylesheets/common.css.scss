@@ -1,0 +1,70 @@
+// @mixin gradient($color1, $color2) {
+//   	background: -webkit-linear-gradient($color1, $color2); /* For Safari 5.1 to 6.0 */
+// 	background: -o-linear-gradient($color1, $color2); /* For Opera 11.1 to 12.0 */
+// 	background: -moz-linear-gradient($color1, $color2); /* For Firefox 3.6 to 15 */
+// 	background: linear-gradient($color1, $color2); /* Standard syntax */
+// }
+
+// MIXINS
+@mixin vcenter {
+    display: inline-block;
+    vertical-align: middle;
+    float: none;
+}
+// MIXINS
+
+
+// SITEWIDE SETTINGS
+html {
+
+}
+body {
+	background-color: #F0F0F0;
+}
+// SITEWIDE SETTINGS
+
+
+
+// HEADER CSS
+.header-container {
+	background-color: #B80000;
+	
+	#title {
+		@include vcenter;
+		#title-text {
+			color: white;
+			text-shadow: 2px 2px #484848;
+		}
+	}
+	#links {
+		margin-left: 7%;
+		@include vcenter;
+		#links-list {
+			list-style-type: none;
+    		margin: 0;
+    		padding: 0;
+    		li {
+    			display: inline;
+    			margin-right: 35px;
+    			a {
+    				text-transform: uppercase;
+    				color: white;
+    			}
+    		}
+		}
+	}
+}
+// HEADER CSS
+
+
+
+// FOOTER CSS
+.footer-container {
+	margin-top: 40px;
+	footer {
+		font-family: "Elena Web Basic","minion pro","minion","Palatino","Times New Roman","Times",sans-serif;
+		padding: 0px 20px 50px 20px;
+		background-color: #E0E0E0;
+	}
+}
+// FOOTER CSS
