@@ -1,5 +1,5 @@
 // @mixin gradient($color1, $color2) {
-//   	background: -webkit-linear-gradient($color1, $color2); /* For Safari 5.1 to 6.0 */
+//  background: -webkit-linear-gradient($color1, $color2); /* For Safari 5.1 to 6.0 */
 // 	background: -o-linear-gradient($color1, $color2); /* For Opera 11.1 to 12.0 */
 // 	background: -moz-linear-gradient($color1, $color2); /* For Firefox 3.6 to 15 */
 // 	background: linear-gradient($color1, $color2); /* Standard syntax */
@@ -31,18 +31,28 @@ body {
 	
 	#title {
 		@include vcenter;
-		#title-text {
-			color: white;
-			text-shadow: 2px 2px #484848;
-			font-variant: small-caps;
-			font-style: italic;
+		h1 {
+			display: inline;
+			position: relative;
+			left: -30px;
+			top: 20px;
+			#title-text {
+				color: white;
+				text-shadow: 2px 2px #484848;
+				font-variant: small-caps;
+				font-style: italic;
+			}
 		}
 		a:hover {
 			text-decoration-line: none;
 		}
+		#logo {
+			display: inline;
+			padding: 5px 0 5px 0;
+		}
 	}
 	#links {
-		margin-left: 7%; //whitespace fix
+		margin-left: -1%; //whitespace fix
 		@include vcenter;
 		#links-list {
 			list-style-type: none;
