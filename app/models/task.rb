@@ -3,5 +3,4 @@ class Task < ActiveRecord::Base
 	validates :title, uniqueness: true
 	validates :list_id, presence: true
 	belongs_to :list
-	has_many :tasks
 end
