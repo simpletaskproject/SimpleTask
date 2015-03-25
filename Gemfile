@@ -11,6 +11,7 @@ gem 'angular-rails-templates'
 gem 'ngannotate-rails'
 gem 'coffee-rails', '~> 4.0.1'
 gem "slim-rails"
+gem 'devise', '~> 3.4.0'
 
 gem 'sdoc', '~> 0.4.0',        group: :doc
 
