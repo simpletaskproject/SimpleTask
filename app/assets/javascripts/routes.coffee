@@ -11,9 +11,15 @@ angular.module('SimpleTask').config ($stateProvider, $urlRouterProvider) ->
 		.state 'login',
 		url: '/login'
 		templateUrl: 'user/_login.html'
-		controller: 'UserCtrl'
+		controller: 'UserCtrl',
+		onEnter: ($state, Auth) ->
+			Auth.currentUser().then ->
+				$state.go('home')
 
 		.state 'register',
 		url: '/register'
 		templateUrl: 'user/_register.html'
-		controller: 'UserCtrl'
+		controller: 'UserCtrl',
+		onEnter: ($state, Auth) ->
+			Auth.currentUser().then ->
+				$state.go('home')	
