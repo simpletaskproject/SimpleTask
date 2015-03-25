@@ -20,7 +20,7 @@ class Api::ListsController < ApplicationController
 	end
 	
 	def destroy
-		list = current_user.list.friendly.find(params[:id])
+		list = current_user.lists.friendly.find(params[:id])
 		list.destroy!
 		head 200
 	end
