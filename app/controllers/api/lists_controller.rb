@@ -32,7 +32,6 @@ class Api::ListsController < ApplicationController
 		params.require(:list).permit(:title, :user_id)
 	end
 	def check_if_owner
-		unless list.user == current_user
-			head 401
+		head 401 unless list.user == current_user
 	end
 end
