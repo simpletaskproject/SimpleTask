@@ -9,6 +9,10 @@
 u1 = User.create(email: 'user1@example.com', password: 'password')
 u2 = User.create(email: 'user2@example.com', password: 'password')
 
-u1.lists.create(title: 'lista1')
+l1 = u1.lists.create(title: 'lista1')
 u1.lists.create(title: 'lista2')
 u1.lists.create(title: 'lista3')
+
+l1.tasks.create(title: 'task1', description: 'description of task1', date: Date.new(2015, 1, 1))
+l1.tasks.create(title: 'task2', description: 'description of task2', date: Date.new(2015, 1, 3))
+l1.tasks.create(title: 'task3', description: 'description of task3', date: Date.new(2015, 1, 2))
