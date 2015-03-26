@@ -14,11 +14,7 @@ class Api::ListsController < ApplicationController
 	end
 
 	def create
-		if owner
-			render json: List.create!(list_params)
-		else
-			head 401
-		end
+		render json: List.create!(list_params)
 	end
 
 	def update
