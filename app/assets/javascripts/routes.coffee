@@ -4,12 +4,12 @@ angular.module('SimpleTask')
 		$urlRouterProvider.otherwise('/')
 
 		$stateProvider
-			
+
 			.state('home',
 			url: '/'
 			templateUrl: 'home/_home.html'
 			controller: 'MainCtrl')
-			
+
 			.state('login',
 			url: '/login'
 			templateUrl: 'user/_login.html'
@@ -17,11 +17,16 @@ angular.module('SimpleTask')
 			onEnter: ($state, Auth) ->
 				Auth.currentUser().then ->
 					$state.go 'home')
-			
+
 			.state('register',
 			url: '/register'
 			templateUrl: 'user/_register.html'
 			controller: 'UserCtrl',
 			onEnter: ($state, Auth) ->
 				Auth.currentUser().then ->
-					$state.go 'home') )
+					$state.go 'home')
+
+			.state('list',
+			url: '^/:list_slug'
+			templateUrl: 'list/_list.html'
+			controller: 'ListCtrl') )
