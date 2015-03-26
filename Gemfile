@@ -14,6 +14,7 @@ gem "slim-rails"
 gem 'devise', '~> 3.4.0'
 gem 'friendly_id', '~> 5.1.0'
 gem 'angular_rails_csrf'
+gem 'faker'
 
 gem 'sdoc', '~> 0.4.0',        group: :doc
 
