@@ -27,6 +27,6 @@ angular.module('SimpleTask')
 					$state.go 'home')
 
 			.state('list',
-			url: '^/:list_slug'
+			url: '/:list_slug'
 			templateUrl: 'list/_list.html'
 			controller: 'ListCtrl') )
