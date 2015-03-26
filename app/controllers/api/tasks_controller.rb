@@ -1,7 +1,7 @@
 class Api::TasksController < ApplicationController
 
 	def index
-		render json: current_user.lists.friendly.find(params[:list_id]).find(params[:id])
+		render json: current_user.tasks.find(params[:id])
 	end
 
 	def create
@@ -9,13 +9,13 @@ class Api::TasksController < ApplicationController
 	end
 
 	def update
-		task = current_user.lists.friendly.find(params[:list_id]).find(params[:id])
+		task = current_user.tasks.find(params[:id])
 		task.update!(task_params)
 		render json: task
 	end
 	
 	def destroy
-		task = current_user.lists.friendly.find(params[:list_id]).find(params[:id])
+		task = current_user.tasks.find(params[:id])
 		task.destroy!
 		head 200
 	end
