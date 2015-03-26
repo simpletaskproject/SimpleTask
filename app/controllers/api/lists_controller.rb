@@ -1,37 +1,56 @@
 class Api::ListsController < ApplicationController
 	before_action :authenticate_user!
-	before_action :check_if_owner, only: [:update, :destroy]
 
 	def index
 		render json: current_user.lists
 	end
 
 	def show
-		render json: current_user.lists.friendly.find(params[:id])
+		if owner
+			render json: list
+		else
+			head 401
+		end
 	end
 
 	def create
-		render json: List.create!(list_params)
+		if owner
+			render json: List.create!(list_params)
+		else
+			head 401
+		end
 	end
 
 	def update
-		list = current_user.lists.friendly.find(params[:id])
-		list.update!(list_params)
-		render json: list
+		if owner
+			list.update!(list_params)
+			render json: list
+		else
+			head 401
+		end
 	end
 
 	def destroy
-		list = current_user.lists.friendly.find(params[:id])
-		list.destroy!
-		head 200
+		if owner
+			list.destroy!
+			head 200
+		else
+			head 401
+		end
 	end
 
 
 	private
-	def list_params
-		params.require(:list).permit(:title, :user_id)
-	end
-	def check_if_owner
-		head 401 unless list.user == current_user
-	end
+		def list_params
+			params.require(:list).permit(:title, :user_id)
+		end
+
+		def list
+			current_user.lists.friendly.find(params[:id])
+		end
+
+		def owner
+			list = List.all.friendly.find(params[:id])
+			list.user == current_user
+		end
 end
