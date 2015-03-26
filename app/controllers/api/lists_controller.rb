@@ -1,5 +1,6 @@
 class Api::ListsController < ApplicationController
 	before_action :authenticate_user!
+	before_action :check_if_owner, only: [:update, :destroy]
 
 	def index
 		render json: current_user.lists
@@ -18,7 +19,7 @@ class Api::ListsController < ApplicationController
 		list.update!(list_params)
 		render json: list
 	end
-	
+
 	def destroy
 		list = current_user.lists.friendly.find(params[:id])
 		list.destroy!
@@ -29,5 +30,9 @@ class Api::ListsController < ApplicationController
 	private
 	def list_params
 		params.require(:list).permit(:title, :user_id)
+	end
+	def check_if_owner
+		unless list.user == current_user
+			head 401
 	end
 end
