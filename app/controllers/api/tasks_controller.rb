@@ -19,8 +19,12 @@ class Api::TasksController < ApplicationController
 	end
 
 	def destroy
-		task.destroy!
-		head 200
+		if owner
+			task.destroy!
+			head 200
+		else
+			head 401
+		end
 	end
 
 	private
