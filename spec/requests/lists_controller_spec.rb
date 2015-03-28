@@ -39,7 +39,7 @@ describe Api::ListsController do
 			let(:user1) { create(:user) }
 			let(:user2) { create(:user) }
 			let(:list1) { create(:list, user: user1) }
-			let(:list2) { create(:list, title: 'SecondTitle', user: user2) }
+			let(:list2) { create(:list, user: user2) }
 
 			before do
 				login_as(user1, :scope => :user)
@@ -107,8 +107,8 @@ describe Api::ListsController do
 		context "as signed in user" do
 			let(:user1) { create(:user) }
 			let(:user2) { create(:user) }
-			let(:list1) { create(:list, user: user1) }
-			let(:list2) { create(:list, user: user2) }
+			let!(:list1) { create(:list, user: user1) }
+			let!(:list2) { create(:list, user: user2) }
 			let(:valid_params) { { title: 'ChangedTitle'} }
 
 			before do
@@ -147,6 +147,40 @@ describe Api::ListsController do
 		end
 	end
 
+	describe "DELETE destroy" do
+		context "as a signed in user" do
 
+			let(:user1) { create(:user) }
+			let(:user2) { create(:user) }
+			let!(:list1) { create(:list, user: user1) }
+			let!(:list2) { create(:list, user: user2) }
 
+			before do
+				login_as(user1, scope: :user)
+			end
+
+			context "as an owner" do
+				it "deletes the requested list" do
+					expect{ delete "/api/lists/#{list1.slug}", format: :json }.to change{ List.count }.by(-1)
+					expect(response.status).to eq(200)
+				end
+			end
+
+			context "as not an owner" do
+				it "doesn't delete the list" do
+					expect{ delete "/api/lists/#{list2.slug}", format: :json }.not_to change{ List.count }
+					expect(response.status).to eq(401)
+				end
+			end
+		end
+
+		context "as not a signed user" do
+			let(:user) { create(:user) }
+			let!(:list) { create(:list, user: user) }
+			it "doesn't delete the list" do
+				expect{ delete "/api/lists/#{list.slug}", format: :json }.not_to change{ List.count }
+				expect(response.status).to eq(401)
+			end
+		end
+ 	end
 end
