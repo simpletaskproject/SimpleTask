@@ -90,4 +90,41 @@ describe Api::TasksController do
 			end
 		end
 
+		describe "DELETE request for destroy" do
+			context "as signed in user" do
+
+				before do
+					login_as(user, scope: :user)
+				end
+
+			 	context "as an owner" do
+			 		it "destroys the task" do
+			 			task = Task.create!(title: 'Title', list: list)
+						expect{ delete "/api/lists/#{list.slug}/tasks/#{task.to_param}", format: :json }
+						.to change{ Task.count }.by(-1)
+				 		expect(response.status).to eq(200)
+			 		end
+			 	end
+
+			 	context "as not an owner" do
+			 		it "doesn't destroy the task" do
+			 			list = create(:list)
+			 			task = Task.create!(title: 'Title', list: list)
+			 			expect{ delete "/api/lists/#{list.slug}/tasks/#{task.to_param}", format: :json }.
+			 			not_to change{ Task.count }
+			 			expect(response.status).to eq(401)
+			 		end
+			 	end
+			end
+		end
+
+		context "as not signed user" do
+			it "doesnt't destroy the task" do
+				task = Task.create!(title: 'Title', list: list)
+				expect{ delete "/api/lists/#{list.slug}/tasks/#{task.to_param}", format: :json }
+				.not_to change{ Task.count }
+				expect(response.status).to eq(401)
+			end
+		end
+
 end
