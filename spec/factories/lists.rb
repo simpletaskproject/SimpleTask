@@ -1,6 +1,6 @@
 FactoryGirl.define do
   factory :list do
-    title "MyString"
+    sequence(:title)  { |n| "Title #{n}}" }
     user
   end
 
