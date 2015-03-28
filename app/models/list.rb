@@ -7,4 +7,8 @@ class List < ActiveRecord::Base
 	has_many :tasks
 
 	friendly_id :title, :use => [:scoped, :slugged], :scope => :user_id
+
+	def as_json(options={})
+		super(:include => :tasks)
+	end
 end
