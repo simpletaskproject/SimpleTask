@@ -1,7 +1,7 @@
 class Api::TasksController < ApplicationController
 
 	def index
-		render json: current_user.tasks.find(params[:id])
+		render json: current_user.tasks
 	end
 
 	def create
@@ -13,7 +13,7 @@ class Api::TasksController < ApplicationController
 		task.update!(task_params)
 		render json: task
 	end
-	
+
 	def destroy
 		task = current_user.tasks.find(params[:id])
 		task.destroy!
