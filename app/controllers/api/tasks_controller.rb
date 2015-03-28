@@ -10,19 +10,31 @@ class Api::TasksController < ApplicationController
 	end
 
 	def update
-		task = current_user.tasks.find(params[:id])
-		task.update!(task_params)
-		render json: task
+		if owner
+			task.update!(task_params)
+			render json: task
+		else
+			head 401
+		end
 	end
 
 	def destroy
-		task = current_user.tasks.find(params[:id])
 		task.destroy!
 		head 200
 	end
 
 	private
+
 	def task_params
 		params.require(:task).permit(:title, :description, :date, :list_id)
+	end
+
+	def task
+		current_user.tasks.find(params[:id])
+	end
+
+	def owner
+		task = Task.all.find(params[:id])
+		task.user == current_user
 	end
 end
