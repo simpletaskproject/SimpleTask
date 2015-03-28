@@ -40,7 +40,8 @@ describe Api::TasksController do
 			end
 
 			it "creates new task" do
-				expect{ post "/api/lists/#{list.slug}/tasks", task: valid_attributes, format: :json}.to change{ Task.count }.by(1)
+				expect{ post "/api/lists/#{list.slug}/tasks", task: valid_attributes, format: :json}
+				.to change{ Task.count }.by(1)
 				json = JSON.parse(response.body)
 				expect(json['title']).to eq('Title')
 				expect(response.status).to eq(200)
@@ -50,8 +51,42 @@ describe Api::TasksController do
 
 		context "as not signed user" do
 			it "doesn't create new task" do
-				expect{ post "/api/lists/#{list.slug}/tasks", task: valid_attributes, format: :json}.not_to change{ Task.count }
+				expect{ post "/api/lists/#{list.slug}/tasks", task: valid_attributes, format: :json}
+				.not_to change{ Task.count }
 				expect(response.status).to eq(401)
+			end
+		end
+
+		describe "PUT request for update" do
+			context "as signed in user" do
+				before do
+					login_as(user, scope: :user)
+				end
+				context "as an owner" do
+					it "updates the task" do
+						put "/api/lists/#{list.slug}/tasks/#{task.to_param}", task: { title: 'Changed' }
+						json = JSON.parse(response.body)
+						expect(json['title']).to eq('Changed')
+						expect(response.status).to eq(200)
+					end
+				end
+
+				context "as not an owner" do
+					it "doesn't update the task" do
+						list = create(:list)
+						task = Task.create!(title: 'title', list: list)
+						put "/api/lists/#{list.slug}/tasks/#{task.to_param}", task: { title: 'Changed' }
+						expect(response.status).to eq(401)
+					end
+				end
+			end
+
+			context "user is not signed in" do
+				it "doesn't update the list" do
+					expect{ put "/api/lists/#{list.slug}/tasks/#{task.to_param}", task: { title: 'Changed' }, format: :json }
+					.not_to change{ list.title }
+					expect(response.status).to eq(401)
+				end
 			end
 		end
 
