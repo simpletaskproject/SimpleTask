@@ -1,32 +1,32 @@
 angular.module('SimpleTask')
 
-	.config( ($stateProvider, $urlRouterProvider) ->
-		$urlRouterProvider.otherwise('/')
+  .config( ($stateProvider, $urlRouterProvider) ->
+    $urlRouterProvider.otherwise('/')
 
-		$stateProvider
+    $stateProvider
 
-			.state('home',
-			url: '/'
-			templateUrl: 'home/_home.html'
-			controller: 'MainCtrl')
+      .state('home',
+      url: '/'
+      templateUrl: 'home/_home.html'
+      controller: 'MainCtrl')
 
-			.state('login',
-			url: '/login'
-			templateUrl: 'user/_login.html'
-			controller: 'UserCtrl',
-			onEnter: ($state, Auth) ->
-				Auth.currentUser().then ->
-					$state.go 'home')
+      .state('login',
+      url: '/login'
+      templateUrl: 'user/_login.html'
+      controller: 'UserCtrl',
+      onEnter: ($state, Auth) ->
+        Auth.currentUser().then ->
+          $state.go 'home')
 
-			.state('register',
-			url: '/register'
-			templateUrl: 'user/_register.html'
-			controller: 'UserCtrl',
-			onEnter: ($state, Auth) ->
-				Auth.currentUser().then ->
-					$state.go 'home')
+      .state('register',
+      url: '/register'
+      templateUrl: 'user/_register.html'
+      controller: 'UserCtrl',
+      onEnter: ($state, Auth) ->
+        Auth.currentUser().then ->
+          $state.go 'home')
 
-			.state('list',
-			url: '/:list_slug'
-			templateUrl: 'list/_list.html'
-			controller: 'ListCtrl') )
+      .state('list',
+      url: '/:list_slug'
+      templateUrl: 'list/_list.html'
+      controller: 'ListCtrl') )

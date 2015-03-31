@@ -7,7 +7,7 @@ angular.module('SimpleTask').controller 'HeaderCtrl', ($scope, Auth) ->
     $scope.user = user
 
   $scope.$on 'devise:new-registration', (e, user) ->
-  	$scope.user = user
+    $scope.user = user
   $scope.$on 'devise:login', (e, user) ->
     $scope.user = user
   $scope.$on 'devise:logout', (e, user) ->

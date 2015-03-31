@@ -1,8 +1,8 @@
 // @mixin gradient($color1, $color2) {
 //  background: -webkit-linear-gradient($color1, $color2); /* For Safari 5.1 to 6.0 */
-// 	background: -o-linear-gradient($color1, $color2); /* For Opera 11.1 to 12.0 */
-// 	background: -moz-linear-gradient($color1, $color2); /* For Firefox 3.6 to 15 */
-// 	background: linear-gradient($color1, $color2); /* Standard syntax */
+//   background: -o-linear-gradient($color1, $color2); /* For Opera 11.1 to 12.0 */
+//   background: -moz-linear-gradient($color1, $color2); /* For Firefox 3.6 to 15 */
+//   background: linear-gradient($color1, $color2); /* Standard syntax */
 // }
 
 // MIXINS
@@ -19,7 +19,7 @@ html {
 
 }
 body {
-	background-color: #F0F0F0;
+  background-color: #F0F0F0;
 }
 // SITEWIDE SETTINGS
 
@@ -27,47 +27,47 @@ body {
 
 // HEADER CSS
 .header-container {
-	background-color: #B80000;
-	
-	#title {
-		@include vcenter;
-		h1 {
-			display: inline;
-			position: relative;
-			left: -30px;
-			top: 20px;
-			#title-text {
-				color: white;
-				text-shadow: 2px 2px #484848;
-				font-variant: small-caps;
-				font-style: italic;
-			}
-		}
-		a:hover {
-			text-decoration-line: none;
-		}
-		#logo {
-			display: inline;
-			padding: 5px 0 5px 0;
-		}
-	}
-	#links {
-		margin-left: -1%; //whitespace fix
-		@include vcenter;
-		#links-list {
-			list-style-type: none;
-    		margin: 0;
-    		padding: 0;
-    		li {
-    			display: inline;
-    			margin-right: 35px;
-    			a {
-    				text-transform: uppercase;
-    				color: white;
-    			}
-    		}
-		}
-	}
+  background-color: #B80000;
+
+  #title {
+    @include vcenter;
+    h1 {
+      display: inline;
+      position: relative;
+      left: -30px;
+      top: 20px;
+      #title-text {
+        color: white;
+        text-shadow: 2px 2px #484848;
+        font-variant: small-caps;
+        font-style: italic;
+      }
+    }
+    a:hover {
+      text-decoration-line: none;
+    }
+    #logo {
+      display: inline;
+      padding: 5px 0 5px 0;
+    }
+  }
+  #links {
+    margin-left: -1%; //whitespace fix
+    @include vcenter;
+    #links-list {
+      list-style-type: none;
+        margin: 0;
+        padding: 0;
+        li {
+          display: inline;
+          margin-right: 35px;
+          a {
+            text-transform: uppercase;
+            color: white;
+          }
+        }
+    }
+  }
 }
 // HEADER CSS
 
@@ -75,20 +75,20 @@ body {
 
 // FOOTER CSS
 .footer-container {
-	margin-top: 40px;
-	footer {
-		font-family: "Elena Web Basic","minion pro","minion","Palatino","Times New Roman","Times",sans-serif;
-		padding: 0px 20px 50px 20px;
-		background-color: #E0E0E0;
-		p {
-			margin: 0;
-			font-style: italic;
-			.app-name {
-				font-variant: small-caps;
-				font-weight: bold;
-				font-style: normal;
-			}
-		}
-	}
+  margin-top: 40px;
+  footer {
+    font-family: "Elena Web Basic","minion pro","minion","Palatino","Times New Roman","Times",sans-serif;
+    padding: 0px 20px 50px 20px;
+    background-color: #E0E0E0;
+    p {
+      margin: 0;
+      font-style: italic;
+      .app-name {
+        font-variant: small-caps;
+        font-weight: bold;
+        font-style: normal;
+      }
+    }
+  }
 }
 // FOOTER CSS
