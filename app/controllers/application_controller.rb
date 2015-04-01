@@ -11,4 +11,8 @@ class ApplicationController < ActionController::Base
     render 'layouts/application'
   end
 
+  rescue_from ActiveRecord::RecordNotFound do
+    head 404
+  end
+
 end
