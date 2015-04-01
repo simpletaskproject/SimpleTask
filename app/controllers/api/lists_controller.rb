@@ -6,11 +6,7 @@ class Api::ListsController < ApplicationController
   end
 
   def show
-    if owner
-      render json: list
-    else
-      head 401
-    end
+    render json: list
   end
 
   def create
@@ -18,21 +14,13 @@ class Api::ListsController < ApplicationController
   end
 
   def update
-    if owner
-      list.update!(list_params)
-      render json: list
-    else
-      head 401
-    end
+    list.update!(list_params)
+    render json: list
   end
 
   def destroy
-    if owner
-      list.destroy!
-      head 200
-    else
-      head 401
-    end
+    list.destroy!
+    head 200
   end
 
 
@@ -43,10 +31,5 @@ class Api::ListsController < ApplicationController
 
     def list
       current_user.lists.friendly.find(params[:id])
-    end
-
-    def owner
-      list = List.all.friendly.find(params[:id])
-      list.user == current_user
     end
 end
