@@ -76,7 +76,7 @@ describe Api::TasksController do
             list = create(:list)
             task = Task.create!(title: 'title', list: list)
             put "/api/lists/#{list.slug}/tasks/#{task.to_param}", task: { title: 'Changed' }
-            expect(response.status).to eq(401)
+            expect(response.status).to eq(404)
           end
         end
       end
@@ -112,7 +112,7 @@ describe Api::TasksController do
              task = Task.create!(title: 'Title', list: list)
              expect{ delete "/api/lists/#{list.slug}/tasks/#{task.to_param}", format: :json }.
              not_to change{ Task.count }
-             expect(response.status).to eq(401)
+             expect(response.status).to eq(404)
            end
          end
       end
