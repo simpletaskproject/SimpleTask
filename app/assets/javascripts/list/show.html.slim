@@ -1,9 +1,28 @@
-h1
-  | {{ list.title }}
+div ng-controller="TasksCtrl"
+  h1
+    | {{ list.title }}
 
-div ng-repeat="task in list.tasks"
-  p
-    | {{ task.title }}
+  div ng-repeat="task in list.tasks"
+    p
+      | {{ task.title }}
+      button type="button" ng-click="destroy(task)" &times;
+      button type="button" ng-click="edit(task)" Edit
 
-div ng-include="'list/index.html'"
+    div ng-if="editedTaskID == task.id"
+      form ng-submit="update(task)"
+        legend Edit task
+        label Ttitle
+        input type="text" ng-model="task.title"
+        br
+        input type="submit" value="Save"
+        input type="button" ng-click="cancelEdit()" value="Cancel"
+
+  form ng-submit="create()"
+    legend New task
+    label Title
+    input type="text" ng-model="newTask.title"
+    br
+    input type="submit" value="Save"
+
+  div ng-include="'list/index.html'"
 
