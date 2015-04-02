@@ -1,11 +1,9 @@
 angular.module('SimpleTask').controller 'ListCtrl', ($scope, $http, Auth, $stateParams) ->
-  #$scope.list = {}
+  $scope.newList = {}
 
-  Auth.currentUser().then ((user) ->
-    $http.get("/api/lists/#{ $stateParams.list_slug }.json").success (data) ->
-      $scope.list = data
-      return
-    $scope.message = 'Success :)'
-    return
-  ), (error) ->
-    $scope.message = 'Fail :('
+  $http.get("/api/lists/#{ $stateParams.list_slug }.json").success (data) ->
+    $scope.list = data
+
+  $http.get("/api/lists").success (data) ->
+    $scope.lists = data
+
