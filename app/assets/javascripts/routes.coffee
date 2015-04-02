@@ -5,10 +5,6 @@ angular.module('SimpleTask').config ($stateProvider, $urlRouterProvider) ->
 
       .state 'index',
         url: '/'
-        controller: 'ListCtrl',
-        resolve:
-          lists: (List) ->
-            List.index()
         templateUrl: 'list/index.html'
 
 
@@ -30,6 +26,5 @@ angular.module('SimpleTask').config ($stateProvider, $urlRouterProvider) ->
 
       .state 'list',
         url: '/:list_slug'
-        controller: 'ListCtrl'
         templateUrl: 'list/show.html'
 
