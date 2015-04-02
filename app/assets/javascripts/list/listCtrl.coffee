@@ -1,8 +1,9 @@
-angular.module('SimpleTask').controller 'ListCtrl', ($scope, $http, List, lists, Auth, $stateParams) ->
+angular.module('SimpleTask').controller 'ListsCtrl', ($scope, $http, List, Auth, $stateParams) ->
   $scope.newList = {}
   $scope.editedListID = null
 
-  $scope.lists = lists.data
+  List.index().success (response) ->
+    $scope.lists = response
 
   $scope.create = (list) ->
     List.create($scope.newList).success (response) ->
