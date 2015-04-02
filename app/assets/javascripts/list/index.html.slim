@@ -1,6 +1,6 @@
 div ng-controller="ListsCtrl"
   div ng-repeat="list in lists"
-    a ui-sref="list({list_slug: list.slug})" {{ list.title }} - {{ list.slug }}
+    a ui-sref="index.list({list_slug: list.slug})" {{ list.title }} - {{ list.slug }}
     button type="button" ng-click="destroy(list)" &times;
     button type="button" ng-click="edit(list)" Edit
 
