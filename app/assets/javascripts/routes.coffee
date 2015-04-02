@@ -5,10 +5,10 @@ angular.module('SimpleTask')
 
     $stateProvider
 
-      .state('home',
+      .state('index',
       url: '/'
-      templateUrl: 'home/_home.html'
-      controller: 'MainCtrl')
+      templateUrl: 'list/index.html'
+      controller: 'ListCtrl')
 
       .state('login',
       url: '/login'
@@ -16,7 +16,7 @@ angular.module('SimpleTask')
       controller: 'UserCtrl',
       onEnter: ($state, Auth) ->
         Auth.currentUser().then ->
-          $state.go 'home')
+          $state.go 'index')
 
       .state('register',
       url: '/register'
@@ -24,9 +24,9 @@ angular.module('SimpleTask')
       controller: 'UserCtrl',
       onEnter: ($state, Auth) ->
         Auth.currentUser().then ->
-          $state.go 'home')
+          $state.go 'index')
 
       .state('list',
       url: '/:list_slug'
-      templateUrl: 'list/_list.html'
+      templateUrl: 'list/show.html'
       controller: 'ListCtrl') )
