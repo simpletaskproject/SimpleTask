@@ -7,7 +7,7 @@ angular.module('SimpleTask').config ($stateProvider, $urlRouterProvider) ->
         url: '/'
         views:
           'menu':
-            templateUrl: 'list/index.html'
+            templateUrl: 'list/menu.html'
             controller: 'ListsCtrl'
 
 
