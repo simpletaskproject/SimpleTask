@@ -8,6 +8,7 @@ angular.module('SimpleTask').config ($stateProvider, $urlRouterProvider) ->
         views:
           'menu':
             templateUrl: 'list/index.html'
+            controller: 'ListsCtrl'
 
 
       .state 'index.login',
@@ -35,4 +36,5 @@ angular.module('SimpleTask').config ($stateProvider, $urlRouterProvider) ->
         views:
           'content@':
             templateUrl: 'list/show.html'
+            controller: 'TasksCtrl'
 
