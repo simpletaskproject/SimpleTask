@@ -17,7 +17,7 @@ describe Api::TasksController do
 
       context "as an owner" do
         it "gets all the tasks" do
-          get '/api/tasks', format: :json
+          get '/api/tasks'
           expect(response.status).to eq(200)
           json = JSON.parse(response.body)
           expect(json.length).to eq(10)
@@ -27,7 +27,7 @@ describe Api::TasksController do
 
     context "as not signed in user" do
       it "renders status 401" do
-        get 'api/tasks', format: :json
+        get 'api/tasks'
         expect(response.status).to eq(401)
       end
     end
@@ -40,7 +40,7 @@ describe Api::TasksController do
       end
 
       it "creates new task" do
-        expect{ post "/api/lists/#{list.slug}/tasks", task: valid_attributes, format: :json}
+        expect{ post "/api/lists/#{list.slug}/tasks", task: valid_attributes }
         .to change{ Task.count }.by(1)
         json = JSON.parse(response.body)
         expect(json['title']).to eq('Title')
@@ -51,7 +51,7 @@ describe Api::TasksController do
 
     context "as not signed user" do
       it "doesn't create new task" do
-        expect{ post "/api/lists/#{list.slug}/tasks", task: valid_attributes, format: :json}
+        expect{ post "/api/lists/#{list.slug}/tasks", task: valid_attributes }
         .not_to change{ Task.count }
         expect(response.status).to eq(401)
       end
@@ -83,7 +83,7 @@ describe Api::TasksController do
 
       context "user is not signed in" do
         it "doesn't update the list" do
-          expect{ put "/api/lists/#{list.slug}/tasks/#{task.to_param}", task: { title: 'Changed' }, format: :json }
+          expect{ put "/api/lists/#{list.slug}/tasks/#{task.to_param}", task: { title: 'Changed' } }
           .not_to change{ list.title }
           expect(response.status).to eq(401)
         end
@@ -100,7 +100,7 @@ describe Api::TasksController do
          context "as an owner" do
            it "destroys the task" do
              task = Task.create!(title: 'Title', list: list)
-            expect{ delete "/api/lists/#{list.slug}/tasks/#{task.to_param}", format: :json }
+            expect{ delete "/api/lists/#{list.slug}/tasks/#{task.to_param}" }
             .to change{ Task.count }.by(-1)
              expect(response.status).to eq(200)
            end
@@ -110,7 +110,7 @@ describe Api::TasksController do
            it "doesn't destroy the task" do
              list = create(:list)
              task = Task.create!(title: 'Title', list: list)
-             expect{ delete "/api/lists/#{list.slug}/tasks/#{task.to_param}", format: :json }.
+             expect{ delete "/api/lists/#{list.slug}/tasks/#{task.to_param}" }.
              not_to change{ Task.count }
              expect(response.status).to eq(404)
            end
@@ -121,7 +121,7 @@ describe Api::TasksController do
     context "as not signed user" do
       it "doesnt't destroy the task" do
         task = Task.create!(title: 'Title', list: list)
-        expect{ delete "/api/lists/#{list.slug}/tasks/#{task.to_param}", format: :json }
+        expect{ delete "/api/lists/#{list.slug}/tasks/#{task.to_param}" }
         .not_to change{ Task.count }
         expect(response.status).to eq(401)
       end
