@@ -1,4 +1,4 @@
-angular.module('SimpleTask').controller 'HeaderCtrl', ($scope, Auth) ->
+angular.module('SimpleTask').controller 'AuthCtrl', ($scope, Auth) ->
 
   $scope.signedIn = Auth.isAuthenticated
   $scope.logout = Auth.logout

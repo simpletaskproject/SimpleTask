@@ -1,0 +1,9 @@
+div ng-controller="AuthCtrl"
+  button ng-hide="signedIn()"
+    a ui-sref="login" Log In
+  button ng-hide="signedIn()"
+    a ui-sref="register" Register
+  button ng-show="signedIn()"
+    a (href="#/") {{ user.email }}
+  button ng-show="signedIn()"
+    a ng-click="logout()" Log Out
