@@ -13,7 +13,7 @@ angular.module('SimpleTask').config ($stateProvider, $urlRouterProvider) ->
       .state 'index.login',
         url: '^/login'
         views:
-          'contents@':
+          'content@':
             templateUrl: 'user/_login.html'
             controller: 'UserCtrl',
 #        onEnter: ($state, Auth) ->
@@ -23,7 +23,7 @@ angular.module('SimpleTask').config ($stateProvider, $urlRouterProvider) ->
       .state 'index.register',
         url: '^/register'
         views:
-          'contents@':
+          'content@':
             templateUrl: 'user/_register.html'
             controller: 'UserCtrl',
 #        onEnter: ($state, Auth) ->
@@ -33,6 +33,6 @@ angular.module('SimpleTask').config ($stateProvider, $urlRouterProvider) ->
       .state 'index.list',
         url: '^/:list_slug'
         views:
-          'contents@':
+          'content@':
             templateUrl: 'list/show.html'
 
