@@ -6,7 +6,7 @@ class Api::TasksController < ApplicationController
   end
 
   def create
-    render json: Task.create!(task_params)
+    render json: list.tasks.create!(task_params)
   end
 
   def update
@@ -23,6 +23,10 @@ class Api::TasksController < ApplicationController
 
   def task_params
     params.require(:task).permit(:title, :description, :date, :list_id)
+  end
+
+  def list
+    current_user.lists.friendly.find(params[:list_id])
   end
 
   def task
