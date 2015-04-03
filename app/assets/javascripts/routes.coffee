@@ -1,4 +1,4 @@
-angular.module('SimpleTask').config ($stateProvider, $urlRouterProvider) ->
+angular.module('SimpleTask').config ($stateProvider, $urlRouterProvider, $httpProvider) ->
     $urlRouterProvider.otherwise('/')
 
     $stateProvider
@@ -16,7 +16,7 @@ angular.module('SimpleTask').config ($stateProvider, $urlRouterProvider) ->
         views:
           'content@':
             templateUrl: 'user/_login.html'
-            controller: 'UserCtrl',
+            controller: 'UserCtrl'
 #        onEnter: ($state, Auth) ->
 #          Auth.currentUser().then ->
 #            $state.go 'index'
@@ -26,7 +26,7 @@ angular.module('SimpleTask').config ($stateProvider, $urlRouterProvider) ->
         views:
           'content@':
             templateUrl: 'user/_register.html'
-            controller: 'UserCtrl',
+            controller: 'UserCtrl'
 #        onEnter: ($state, Auth) ->
 #          Auth.currentUser().then ->
 #            $state.go 'index'
@@ -38,3 +38,16 @@ angular.module('SimpleTask').config ($stateProvider, $urlRouterProvider) ->
             templateUrl: 'list/show.html'
             controller: 'TasksCtrl'
 
+
+    $httpProvider.interceptors.push ($q, $injector) ->
+      {
+        'response': (response) ->
+          console.log('response')
+          return response
+        'responseError': (rejection) ->
+          if rejection.status == 401
+            $injector.get('$state').go 'index.login'
+
+          console.log('responseError')
+          return $q.reject(rejection)
+      }
