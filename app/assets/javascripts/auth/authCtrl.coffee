@@ -1,4 +1,4 @@
-angular.module('SimpleTask').controller 'AuthCtrl', ($scope, Auth) ->
+angular.module('SimpleTask').controller 'AuthCtrl', ($scope, $state, Auth) ->
 
   $scope.signedIn = Auth.isAuthenticated
   $scope.logout = Auth.logout
@@ -12,3 +12,4 @@ angular.module('SimpleTask').controller 'AuthCtrl', ($scope, Auth) ->
     $scope.user = user
   $scope.$on 'devise:logout', (e, user) ->
     $scope.user = {}
+    $state.go 'index', {}, {reload: true}
