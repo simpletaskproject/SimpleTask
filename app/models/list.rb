@@ -5,7 +5,7 @@ class List < ActiveRecord::Base
   validates :user_id, presence: true
   validates_uniqueness_of :title, :scope => :user
   belongs_to :user
-  has_many :tasks
+  has_many :tasks, dependent: :destroy
 
   friendly_id :title, :use => [:scoped, :slugged], :scope => :user_id
 
