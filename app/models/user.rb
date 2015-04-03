@@ -6,7 +6,7 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
-  has_many :lists
+  has_many :lists, dependent: :destroy
   has_many :tasks, through: :lists
 
   friendly_id :email
