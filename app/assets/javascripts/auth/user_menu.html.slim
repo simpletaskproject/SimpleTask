@@ -1,8 +1,4 @@
 div ng-controller="AuthCtrl"
-  li ng-hide="signedIn()"
-    a ui-sref="index.login" Log In
-  li ng-hide="signedIn()"
-    a ui-sref="index.register" Register
   li ng-show="signedIn()"
     a (href="#/") Settings
   li ng-show="signedIn()"
