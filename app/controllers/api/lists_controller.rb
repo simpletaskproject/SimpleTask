@@ -14,8 +14,9 @@ class Api::ListsController < ApplicationController
   end
 
   def update
-    list.update!(list_params)
-    render json: list
+    updated_list = list
+    updated_list.update!(list_params)
+    render json: updated_list
   end
 
   def destroy

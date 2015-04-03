@@ -12,4 +12,9 @@ class List < ActiveRecord::Base
   def as_json(options={})
     super(:include => :tasks)
   end
+
+  def should_generate_new_friendly_id?
+    title_changed? || super
+  end
+
 end

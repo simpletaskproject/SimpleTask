@@ -6,7 +6,7 @@ angular.module('SimpleTask').service 'List', ($http) ->
     $http.get("#{base}/#{name}")
   create: (list) ->
     $http.post(base, list: list)
-  update: (list) ->
-    $http.put("#{base}/#{ list.slug }", list: list)
+  update: (list, oldSlug) ->
+    $http.put("#{base}/#{oldSlug}", list: list)
   destroy: (list) ->
-    $http.delete("#{base}/#{ list.slug }")
+    $http.delete("#{base}/#{list.slug}")
