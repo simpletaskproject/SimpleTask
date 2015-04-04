@@ -1,10 +1,9 @@
 div ng-include="'auth/user_menu.html'"
 
 div ng-repeat="list in lists"
-  a ui-sref="index.list({list_slug: list.slug})" {{ list.title }} - {{ list.slug }}
+  a ui-sref="index.list({list_slug: list.slug})" ng-click="setActiveListID(list.id)" {{ list.title }} - {{ list.slug }}
   button type="button" ng-click="destroy(list)" &times;
   button type="button" ng-click="edit(list)" Edit
-
   div ng-if="editedListID == list.id"
     form ng-submit="update(list)"
       legend Edit list
