@@ -25,6 +25,7 @@ angular.module('SimpleTask').controller 'ListsCtrl', ($scope, $http, List, Auth,
 
   $scope.update = (list) ->
     List.update(list, $scope.oldSlug).success (response) ->
+      list.slug = response.slug
       index = $scope.lists.indexOf(list)
       $scope.lists.splice(index, 1, list)
       $scope.editedListID = null
