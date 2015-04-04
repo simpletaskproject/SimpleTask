@@ -2,6 +2,10 @@ angular.module('SimpleTask').controller 'ListsCtrl', ($scope, $http, List, Auth,
   $scope.newList = {}
   $scope.editedListID = null
   $scope.oldSlug = null
+  $scope.activeListID = null
+
+  $scope.setActiveListID = (listID) ->
+    $scope.activeListID = listID
 
   List.index().success (response) ->
     $scope.lists = response
