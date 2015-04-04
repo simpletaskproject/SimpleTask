@@ -42,12 +42,9 @@ angular.module('SimpleTask').config ($stateProvider, $urlRouterProvider, $httpPr
     $httpProvider.interceptors.push ($q, $injector) ->
       {
         'response': (response) ->
-          console.log('response')
           return response
         'responseError': (rejection) ->
           if rejection.status == 401
             $injector.get('$state').go 'index.login'
-
-          console.log('responseError')
           return $q.reject(rejection)
       }
