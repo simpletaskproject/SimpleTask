@@ -44,7 +44,7 @@ angular.module('SimpleTask').config ($stateProvider, $urlRouterProvider, $httpPr
         'response': (response) ->
           return response
         'responseError': (rejection) ->
-          if rejection.status == 401
+          if rejection.status == 401 && $injector.get('$state').current.name != 'index.register'
             $injector.get('$state').go 'index.login'
           return $q.reject(rejection)
       }
