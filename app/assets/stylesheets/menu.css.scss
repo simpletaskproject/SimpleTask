@@ -44,3 +44,17 @@
   box-shadow: 0px 0px 2px #888888 inset;
 }
 // LISTS LABEL
+
+// LIST ITEM
+.list-item {
+  padding: 5px;
+  margin-bottom: 1px;
+  margin-left: 5px;
+  background-color: #F8F8F8;
+  display: block;
+  box-shadow: 0px 0px 2px #B0B0B0 inset;
+}
+.list-item:hover {
+  background-color: #E8E8E8;
+}
+// LIST ITEM
