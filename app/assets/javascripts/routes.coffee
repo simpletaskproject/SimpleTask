@@ -17,9 +17,9 @@ angular.module('SimpleTask').config ($stateProvider, $urlRouterProvider, $httpPr
           'content@':
             templateUrl: 'user/_login.html'
             controller: 'UserCtrl'
-#        onEnter: ($state, Auth) ->
-#          Auth.currentUser().then ->
-#            $state.go 'index'
+        onEnter: ($state, Auth) ->
+          Auth.currentUser().then ->
+            $state.go 'index'
 
       .state 'index.register',
         url: '^/register'
@@ -27,9 +27,9 @@ angular.module('SimpleTask').config ($stateProvider, $urlRouterProvider, $httpPr
           'content@':
             templateUrl: 'user/_register.html'
             controller: 'UserCtrl'
-#        onEnter: ($state, Auth) ->
-#          Auth.currentUser().then ->
-#            $state.go 'index'
+        onEnter: ($state, Auth) ->
+          Auth.currentUser().then ->
+            $state.go 'index'
 
       .state 'index.list',
         url: '^/:list_slug'
