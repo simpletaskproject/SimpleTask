@@ -1,9 +1,10 @@
-div.user-menu ng-controller="AuthCtrl"
-  li ng-show="signedIn()"
-    a ng-click="logout()"
-      span.glyphicon.glyphicon-remove
-      |  Log Out
-  li ng-show="signedIn()"
-    a (href="#/")
-      span.glyphicon.glyphicon-cog
-      |  Settings
+div ng-controller="AuthCtrl"
+  div.user-menu ng-show="signedIn()"
+    li
+      a ng-click="logout()"
+        span.glyphicon.glyphicon-remove
+        |  Log Out
+    li
+      a (href="#/")
+        span.glyphicon.glyphicon-cog
+        |  Settings
