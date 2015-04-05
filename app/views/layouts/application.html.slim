@@ -5,7 +5,7 @@ html
     = stylesheet_link_tag    'application', media: 'all'
     = javascript_include_tag 'application'
     = csrf_meta_tags
-  body ng-app="SimpleTask"
+  body.main-container ng-app="SimpleTask"
 
     / .header-container.container-fluid
     /   div ng-include="'common/_header.html'"
@@ -13,6 +13,6 @@ html
     /   ui-view
     / .footer-container.container-fluid
     /   div ng-include="'common/_footer.html'"
-    div.container.panel.panel-body ui-view="menu"
-    div.container.panel.panel-body ui-view="content"
+    div.menu-container ui-view="menu"
+    div.content-container ui-view="content"
 
