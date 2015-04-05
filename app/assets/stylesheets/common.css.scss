@@ -4,6 +4,13 @@ html {
 }
 body {
   font-family: "Raleway", "Helvetica Neue", Helvetica, "Segoe UI", Tahoma, Arial, sans-serif;
+  a:focus {
+    outline: 0;
+    text-decoration: none;
+  }
+  a:hover {
+    text-decoration: none;
+  }
 }
 .main-container {
 
