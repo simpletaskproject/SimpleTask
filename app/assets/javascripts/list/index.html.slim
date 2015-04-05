@@ -1,5 +1,7 @@
 div ng-include="'auth/user_menu.html'"
 
+p.lists-label Your lists
+
 div ng-repeat="list in lists"
   a ui-sref="index.list({list_slug: list.slug})" ng-click="setActiveListID(list.id)" {{ list.title }} - {{ list.slug }}
   button type="button" ng-click="destroy(list)" &times;
