@@ -14,7 +14,7 @@ div ng-repeat="task in list.tasks"
       input type="text" ng-model="task.title"
       br
       input type="submit" value="Save"
-      input type="button" ng-click="cancelEdit()" value="Cancel"
+      input type="button" ng-click="cancelEdit(task)" value="Cancel"
 
 form ng-submit="create()"
   legend New task
