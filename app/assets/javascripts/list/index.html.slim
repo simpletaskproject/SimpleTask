@@ -3,7 +3,7 @@ div ng-include="'auth/user_menu.html'"
 p.separator-label Your lists
 
 div.list-item ng-class="{ 'active-list': list.slug == activeSlug }" ng-repeat="list in lists"
-  a ui-sref="index.list({list_slug: list.slug})" ng-click="setActiveListID(list.id)"
+  a ui-sref="index.list({list_slug: list.slug})"
     | {{ list.title }}
   button type="button" ng-click="destroy(list)" &times;
   button type="button" ng-click="edit(list)" Edit

@@ -2,12 +2,8 @@ angular.module('SimpleTask').controller 'ListsCtrl', ($scope, $http, List, Auth,
   $scope.newList = {}
   $scope.editedListID = null
   $scope.oldSlug = null
-  $scope.activeListID = null
   $scope.oldTitle = null
   $scope.activeSlug = $state.params.list_slug
-
-  $scope.setActiveListID = (listID) ->
-    $scope.activeListID = listID
 
   List.index().success (response) ->
     $scope.lists = response
@@ -35,14 +31,14 @@ angular.module('SimpleTask').controller 'ListsCtrl', ($scope, $http, List, Auth,
       $scope.lists.splice(index, 1, list)
       $scope.editedListID = null
       $scope.oldSlug = null
-      if $scope.activeListID == list.id
+      if $scope.activeSlug == list.slug
         $state.go('index.list', { list_slug: list.slug })
 
   $scope.destroy = (list) ->
     List.destroy(list).success (response) ->
       index = $scope.lists.indexOf(list)
       $scope.lists.splice(index,1)
-    if $scope.activeListID == list.id
+    if $scope.activeSlug == list.slug
       $state.go 'index'
 
   $scope.$on '$stateChangeSuccess', (e) ->
