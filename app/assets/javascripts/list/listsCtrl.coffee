@@ -4,6 +4,7 @@ angular.module('SimpleTask').controller 'ListsCtrl', ($scope, $http, List, Auth,
   $scope.oldSlug = null
   $scope.activeListID = null
   $scope.oldTitle = null
+  $scope.activeSlug = $state.params.list_slug
 
   $scope.setActiveListID = (listID) ->
     $scope.activeListID = listID
@@ -45,6 +46,7 @@ angular.module('SimpleTask').controller 'ListsCtrl', ($scope, $http, List, Auth,
       $state.go 'index'
 
   $scope.$on '$stateChangeSuccess', (e) ->
+    $scope.activeSlug = $state.params.list_slug
     if $state.current.name == 'index'
-      $scope.activeListID = null
       $scope.editedListID = null
+
