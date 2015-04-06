@@ -13,7 +13,7 @@ div ng-repeat="list in lists"
       input type="text" ng-model="list.title"
       br
       input type="submit" value="Save"
-      input type="button" ng-click="cancelEdit()" value="Cancel"
+      input type="button" ng-click="cancelEdit(list)" value="Cancel"
 
 form ng-submit="create()"
   legend New list

@@ -3,6 +3,7 @@ angular.module('SimpleTask').controller 'ListsCtrl', ($scope, $http, List, Auth,
   $scope.editedListID = null
   $scope.oldSlug = null
   $scope.activeListID = null
+  $scope.oldTitle = null
 
   $scope.setActiveListID = (listID) ->
     $scope.activeListID = listID
@@ -18,10 +19,13 @@ angular.module('SimpleTask').controller 'ListsCtrl', ($scope, $http, List, Auth,
   $scope.edit = (list) ->
     $scope.editedListID = list.id
     $scope.oldSlug = list.slug
+    $scope.oldTitle = list.title
 
-  $scope.cancelEdit = ->
+  $scope.cancelEdit = (list) ->
+    list.title = $scope.oldTitle
     $scope.editedListID = null
     $scope.oldSlug = null
+    $scope.oldTitle = null
 
   $scope.update = (list) ->
     List.update(list, $scope.oldSlug).success (response) ->
