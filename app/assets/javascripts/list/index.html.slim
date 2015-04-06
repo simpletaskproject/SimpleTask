@@ -1,6 +1,6 @@
 div ng-include="'auth/user_menu.html'"
 
-p.lists-label Your lists
+p.separator-label Your lists
 
 div ng-repeat="list in lists"
   a.list-item ui-sref="index.list({list_slug: list.slug})" ng-click="setActiveListID(list.id)" {{ list.title }}
@@ -22,4 +22,4 @@ div ng-repeat="list in lists"
 /   br
 /   input type="submit" value="Save"
 
-p.lists-label Don't forget a thing!
+p.separator-label Don't forget a thing!
