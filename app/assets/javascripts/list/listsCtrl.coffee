@@ -47,3 +47,4 @@ angular.module('SimpleTask').controller 'ListsCtrl', ($scope, $http, List, Auth,
   $scope.$on '$stateChangeSuccess', (e) ->
     if $state.current.name == 'index'
       $scope.activeListID = null
+      $scope.editedListID = null
