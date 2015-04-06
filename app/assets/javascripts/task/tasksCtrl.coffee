@@ -1,6 +1,7 @@
 angular.module('SimpleTask').controller 'TasksCtrl', ($scope, $http, List, Task, Auth, $stateParams) ->
   $scope.newTask = {}
   $scope.editedTaskID = null
+  $scope.oldTitle = null
 
   List.show($stateParams.list_slug).success (response) ->
     $scope.list = response
@@ -12,9 +13,13 @@ angular.module('SimpleTask').controller 'TasksCtrl', ($scope, $http, List, Task,
 
   $scope.edit = (task) ->
     $scope.editedTaskID = task.id
+    $scope.oldTitle = task.title
 
-  $scope.cancelEdit = ->
+  $scope.cancelEdit = (task) ->
+    task.title = $scope.oldTitle
     $scope.editedTaskID = null
+    $scope.oldTitle = null
+
 
   $scope.update = (task) ->
     Task.update(task).success (response) ->
