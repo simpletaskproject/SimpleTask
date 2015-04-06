@@ -34,6 +34,8 @@ angular.module('SimpleTask').controller 'ListsCtrl', ($scope, $http, List, Auth,
       $scope.lists.splice(index, 1, list)
       $scope.editedListID = null
       $scope.oldSlug = null
+      if $scope.activeListID == list.id
+        $state.go('index.list', { list_slug: list.slug })
 
   $scope.destroy = (list) ->
     List.destroy(list).success (response) ->
