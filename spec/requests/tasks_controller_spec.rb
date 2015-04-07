@@ -17,7 +17,7 @@ describe Api::TasksController do
 
       context "as an owner" do
         it "gets all the tasks" do
-          get '/api/tasks'
+          get '/api/tasks/all'
           expect(response.status).to eq(200)
           json = JSON.parse(response.body)
           expect(json.length).to eq(10)
@@ -27,7 +27,7 @@ describe Api::TasksController do
 
     context "as not signed in user" do
       it "renders status 401" do
-        get 'api/tasks'
+        get 'api/tasks/all'
         expect(response.status).to eq(401)
       end
     end
