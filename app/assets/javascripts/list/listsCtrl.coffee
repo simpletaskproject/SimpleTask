@@ -43,7 +43,7 @@ angular.module('SimpleTask').controller 'ListsCtrl', ($scope, $http, List, Auth,
 
   $scope.$on '$stateChangeSuccess', (e) ->
     $scope.activeSlug = $state.params.list_slug
-
+    $scope.editedListID = null
     if $state.current.name == 'index'
       $scope.editedListID = null
 
