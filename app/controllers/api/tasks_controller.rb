@@ -2,7 +2,8 @@ class Api::TasksController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    render json: current_user.tasks
+    scope = params[:scope]
+    render json: current_user.tasks.send(scope)
   end
 
   def create
