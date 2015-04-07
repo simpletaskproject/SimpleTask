@@ -75,4 +75,10 @@
     background-color: #D8D8D8;
   }
 }
+.edit-button {
+  transition: all linear 0.2s;
+}
+.edit-button.ng-hide {
+  opacity: 0;
+}
 // LIST ITEM
