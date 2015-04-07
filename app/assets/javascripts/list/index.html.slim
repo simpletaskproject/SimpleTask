@@ -5,7 +5,8 @@ p.separator-label Your lists
 div.list-item ng-class="{ 'active-list': list.slug == activeSlug }" ng-repeat="list in lists"
   a ui-sref="index.list({list_slug: list.slug})"
     | {{ list.title }}
-    button.pull-right.edit-button type="button" ng-click="edit(list)" ng-show="list.slug == activeSlug" Edit
+    /button.pull-right.edit-button type="button" ng-click="edit(list)" ng-show="list.slug == activeSlug" Edit
+    div.glyphicon.glyphicon-wrench.edit-button ng-click="edit(list)" ng-show="list.slug == activeSlug"
     div ng-if="editedListID == list.id"
       form ng-submit="update(list)"
         legend Edit list
