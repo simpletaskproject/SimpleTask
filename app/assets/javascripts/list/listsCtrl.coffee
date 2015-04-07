@@ -38,11 +38,12 @@ angular.module('SimpleTask').controller 'ListsCtrl', ($scope, $http, List, Auth,
     List.destroy(list).success (response) ->
       index = $scope.lists.indexOf(list)
       $scope.lists.splice(index,1)
-    if $scope.activeSlug == list.slug
-      $state.go 'index'
+      if $scope.activeSlug == list.slug
+        $state.go 'index'
 
   $scope.$on '$stateChangeSuccess', (e) ->
     $scope.activeSlug = $state.params.list_slug
+
     if $state.current.name == 'index'
       $scope.editedListID = null
 
