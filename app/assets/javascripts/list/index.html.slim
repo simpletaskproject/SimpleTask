@@ -5,16 +5,16 @@ p.separator-label Your lists
 div.list-item ng-class="{ 'active-list': list.slug == activeSlug }" ng-repeat="list in lists"
   a ui-sref="index.list({list_slug: list.slug})"
     | {{ list.title }}
-  button type="button" ng-click="destroy(list)" &times;
-  button type="button" ng-click="edit(list)" Edit
-  div ng-if="editedListID == list.id"
-    form ng-submit="update(list)"
-      legend Edit list
-      label Ttitle
-      input type="text" ng-model="list.title"
-      br
-      input type="submit" value="Save"
-      input type="button" ng-click="cancelEdit(list)" value="Cancel"
+    button.pull-right.edit-button type="button" ng-click="edit(list)" ng-show="list.slug == activeSlug" Edit
+    div ng-if="editedListID == list.id"
+      form ng-submit="update(list)"
+        legend Edit list
+        label Ttitle
+        input type="text" ng-model="list.title"
+        br
+        input type="submit" value="Save"
+        input type="button" ng-click="cancelEdit(list)" value="Cancel"
+        button.pull-right type="button" ng-click="destroy(list)" &times;
 
 form ng-submit="create()"
   legend New list
