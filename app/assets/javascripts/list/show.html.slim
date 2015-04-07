@@ -13,6 +13,9 @@ div ng-repeat="task in list.tasks"
       label Ttitle
       input type="text" ng-model="task.title"
       br
+      label Date
+      input type="date" ng-model="task.date"
+      br
       input type="submit" value="Save"
       input type="button" ng-click="cancelEdit(task)" value="Cancel"
 
