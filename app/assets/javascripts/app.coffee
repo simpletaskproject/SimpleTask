@@ -1,1 +1,1 @@
-angular.module 'SimpleTask', ['ui.router', 'templates', 'Devise']
+angular.module 'SimpleTask', ['ui.router', 'templates', 'Devise', 'ngAnimate']
