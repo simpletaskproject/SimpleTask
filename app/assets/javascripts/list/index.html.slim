@@ -12,7 +12,7 @@ div.menu-container ng-show="signedIn()"
       div.list-edit ng-switch-when="true"
         form ng-submit="update(list)"
           input type="text" ng-model="list.title"
-          button type="button" ng-click="destroy(list)" &times;
+          div.glyphicon.glyphicon-remove.remove-button ng-click="destroy(list)"
           div.glyphicon.glyphicon-wrench.edit-button ng-click="cancelEdit(list)"
 
   form ng-submit="create()"
