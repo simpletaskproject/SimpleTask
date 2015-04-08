@@ -1,7 +1,7 @@
 h1
   | {{ list.title }}
 
-div ng-repeat="task in list.tasks"
+div ng-repeat="task in list.tasks | filter: { active: true }"
   p
     | {{ task.title }}
     button type="button" ng-click="destroy(task)" &times;
@@ -19,6 +19,12 @@ div ng-repeat="task in list.tasks"
       br
       input type="submit" value="Save"
       input type="button" ng-click="cancelEdit(task)" value="Cancel"
+
+h1 Done
+
+div ng-repeat="task in list.tasks | filter: { active: false }"
+  p
+    | {{ task.title }}
 
 form ng-submit="create()"
   legend New task
