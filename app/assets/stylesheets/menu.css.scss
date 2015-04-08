@@ -73,6 +73,10 @@
       float: right;
       margin: 3px;
     }
+    .remove-button {
+      cursor: pointer;
+      cursor: hand;
+    }
   }
   .list-link, .list-edit {
     height: 30px;
