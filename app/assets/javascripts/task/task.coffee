@@ -7,4 +7,5 @@ angular.module('SimpleTask').service 'Task', ($http, $stateParams) ->
     $http.put("#{base}/#{task.id}", task: task)
   destroy: (task) ->
     $http.delete("#{base}/#{task.id}")
-
+  complete: (task) ->
+    $http.put("#{base}/#{task.id}/complete")
