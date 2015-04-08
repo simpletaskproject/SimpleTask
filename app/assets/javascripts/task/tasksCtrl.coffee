@@ -22,9 +22,7 @@ angular.module('SimpleTask').controller 'TasksCtrl', ($scope, $http, List, Task,
 
 
   $scope.update = (task) ->
-    console.log task.date
     task.date = addHours(task.date)
-    console.log task.date
     Task.update(task).success (response) ->
       index = $scope.list.tasks.indexOf(task)
       $scope.list.tasks.splice(index, 1, task)
@@ -35,4 +33,7 @@ angular.module('SimpleTask').controller 'TasksCtrl', ($scope, $http, List, Task,
       index = $scope.list.tasks.indexOf(task)
       $scope.list.tasks.splice(index,1)
 
-
+  $scope.complete = (task) ->
+    Task.complete(task).success (response) ->
+      index = $scope.list.tasks.indexOf(task)
+      $scope.list.tasks.splice(index, 1, task)
