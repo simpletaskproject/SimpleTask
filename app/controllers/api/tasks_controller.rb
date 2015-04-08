@@ -20,6 +20,11 @@ class Api::TasksController < ApplicationController
     head 200
   end
 
+  def complete
+    task.update!(active: false)
+    render json: task
+  end
+
   private
 
   def task_params
