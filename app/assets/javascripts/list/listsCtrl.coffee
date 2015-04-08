@@ -4,6 +4,8 @@ angular.module('SimpleTask').controller 'ListsCtrl', ($scope, $http, List, Auth,
   $scope.oldSlug = null
   $scope.oldTitle = null
   $scope.activeSlug = $state.params.list_slug
+  $scope.signedIn = Auth.isAuthenticated
+
 
   List.index().success (response) ->
     $scope.lists = response

@@ -1,23 +1,25 @@
-div ng-include="'auth/user_menu.html'"
+div.menu-container ng-show="signedIn()"
 
-p.separator-label Your lists
+  div ng-include="'auth/user_menu.html'"
 
-div.list-item ng-class="{ 'active-list': list.slug == activeSlug }" ng-repeat="list in lists"
-  div ng-switch="editedListID == list.id"
-    div.list-link ng-switch-when="false" ui-sref="index.list({list_slug: list.slug})"
-      | {{ list.title }}
-      div.glyphicon.glyphicon-wrench.edit-button ng-click="edit(list)" ng-show="list.slug == activeSlug"
-    div.list-edit ng-switch-when="true"
-      form ng-submit="update(list)"
-        input type="text" ng-model="list.title"
-        button type="button" ng-click="destroy(list)" &times;
-        div.glyphicon.glyphicon-wrench.edit-button ng-click="cancelEdit(list)"
+  p.separator-label Your lists
 
-form ng-submit="create()"
-  legend New list
-  label Title
-  input type="text" ng-model="newList.title"
-  br
-  input type="submit" value="Save"
+  div.list-item ng-class="{ 'active-list': list.slug == activeSlug }" ng-repeat="list in lists"
+    div ng-switch="editedListID == list.id"
+      div.list-link ng-switch-when="false" ui-sref="index.list({list_slug: list.slug})"
+        | {{ list.title }}
+        div.glyphicon.glyphicon-wrench.edit-button ng-click="edit(list)" ng-show="list.slug == activeSlug"
+      div.list-edit ng-switch-when="true"
+        form ng-submit="update(list)"
+          input type="text" ng-model="list.title"
+          button type="button" ng-click="destroy(list)" &times;
+          div.glyphicon.glyphicon-wrench.edit-button ng-click="cancelEdit(list)"
 
-p.separator-label Don't forget a thing!
+  form ng-submit="create()"
+    legend New list
+    label Title
+    input type="text" ng-model="newList.title"
+    br
+    input type="submit" value="Save"
+
+  p.separator-label Don't forget a thing!
