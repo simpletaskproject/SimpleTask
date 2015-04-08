@@ -3,7 +3,11 @@ Rails.application.routes.draw do
 
   namespace :api, defaults: { format: :json } do
     resources :lists, only: [:index, :show, :create, :update, :destroy] do
-      resources :tasks, only: [:update, :create, :destroy]
+      resources :tasks, only: [:update, :create, :destroy] do
+        member do
+          put 'complete'
+        end
+      end
     end
     get '/tasks/:scope', to: 'tasks#index'
   end
