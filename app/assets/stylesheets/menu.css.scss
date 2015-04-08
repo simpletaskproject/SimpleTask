@@ -77,6 +77,19 @@
       cursor: pointer;
       cursor: hand;
     }
+    .confirm-delete {
+      margin: 3px;
+      display: inline-block;
+      p, span {
+        margin: 0;
+        margin-left: 4px;
+        display: inline;
+      }
+      span {
+        cursor: pointer;
+        cursor: hand;
+      }
+    }
   }
   .list-link, .list-edit {
     height: 30px;
