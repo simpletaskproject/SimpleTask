@@ -6,6 +6,7 @@ div ng-repeat="task in list.tasks"
     | {{ task.title }}
     button type="button" ng-click="destroy(task)" &times;
     button type="button" ng-click="edit(task)" Edit
+    button type="button" ng-click="complete(task)" Complete
 
   div ng-if="editedTaskID == task.id"
     form ng-submit="update(task)"
