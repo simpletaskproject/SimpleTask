@@ -66,7 +66,6 @@
     }
     input {
       width: 70%;
-      font-size: 1em;
       border-radius: 4px;
     }
     .edit-button {
@@ -122,3 +121,24 @@
   opacity: 0;
 }
 // LIST ITEM
+
+// NEW LIST
+.new-list {
+  height: 30px;
+  padding: 5px;
+  padding-left: 30px;
+  .new-list-form {
+    display: inline;
+    input {
+      width: 70%;
+      border-radius: 4px;
+    }
+  }
+  .new-list-button {
+    font-size: 1.3em;
+    float: right;
+    display: inline;
+    cursor: pointer;
+    cursor: hand;
+  }
+}
