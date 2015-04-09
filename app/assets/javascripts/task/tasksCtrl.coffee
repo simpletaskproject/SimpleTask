@@ -5,10 +5,12 @@ angular.module('SimpleTask').controller 'TasksCtrl', ($scope, $http, List, Task,
 
   List.show($stateParams.list_slug).success (response) ->
     $scope.list = response
+    $scope.tasks = $scope.list.tasks
+
 
   $scope.create = (task) ->
     Task.create($scope.newTask).success (response) ->
-      $scope.list.tasks.push response
+      $scope.tasks.push response
       $scope.newTask = {}
 
   $scope.edit = (task) ->
@@ -24,17 +26,17 @@ angular.module('SimpleTask').controller 'TasksCtrl', ($scope, $http, List, Task,
   $scope.update = (task) ->
     task.date = addHours(task.date)
     Task.update(task).success (response) ->
-      index = $scope.list.tasks.indexOf(task)
-      $scope.list.tasks.splice(index, 1, task)
+      index = $scope.tasks.indexOf(task)
+      $scope.tasks.splice(index, 1, task)
       $scope.editedTaskID = null
 
   $scope.destroy = (task) ->
     Task.destroy(task).success (response) ->
-      index = $scope.list.tasks.indexOf(task)
-      $scope.list.tasks.splice(index,1)
+      index = $scope.tasks.indexOf(task)
+      $scope.tasks.splice(index,1)
 
   $scope.complete = (task) ->
     Task.complete(task).success (response) ->
-      index = $scope.list.tasks.indexOf(task)
-      $scope.list.tasks.splice(index, 1)
-      $scope.list.tasks.push response
+      index = $scope.tasks.indexOf(task)
+      $scope.tasks.splice(index, 1)
+      $scope.tasks.push response
