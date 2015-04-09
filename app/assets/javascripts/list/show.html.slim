@@ -20,7 +20,7 @@ div ng-repeat="task in list.tasks | filter: { active: true }"
       input type="submit" value="Save"
       input type="button" ng-click="cancelEdit(task)" value="Cancel"
 
-h1 Done
+h1 Completed
 
 div ng-repeat="task in list.tasks | filter: { active: false }"
   p

@@ -37,3 +37,4 @@ angular.module('SimpleTask').controller 'TasksCtrl', ($scope, $http, List, Task,
     Task.complete(task).success (response) ->
       index = $scope.list.tasks.indexOf(task)
       $scope.list.tasks.splice(index, 1)
+      $scope.list.tasks.push response
