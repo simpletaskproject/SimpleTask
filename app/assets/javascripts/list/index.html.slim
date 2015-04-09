@@ -3,12 +3,13 @@ div.menu-container ng-show="signedIn()"
   div ng-include="'auth/user_menu.html'"
 
   p.separator-label Your lists
-
   div.list-item ng-class="{ 'active-list': list.slug == activeSlug }" ng-repeat="list in lists"
     div ng-switch="editedListID == list.id"
+
       div.list-link ng-switch-when="false" ui-sref="index.list({list_slug: list.slug})"
         | {{ list.title }}
         div.glyphicon.glyphicon-wrench.edit-button ng-click="edit(list)" ng-show="list.slug == activeSlug"
+
       div.list-edit ng-switch-when="true"
         form ng-hide="confirmDelete" ng-submit="update(list)"
           input type="text" ng-model="list.title"
@@ -19,11 +20,10 @@ div.menu-container ng-show="signedIn()"
           span.glyphicon.glyphicon-remove ng-click="confirmDelete = false"
         div.glyphicon.glyphicon-wrench.edit-button ng-click="cancelEdit(list)"
 
-  form ng-submit="create()"
-    legend New list
-    label Title
-    input type="text" ng-model="newList.title"
-    br
-    input type="submit" value="Save"
+  div.new-list
+    form.new-list-form ng-show="newList" ng-submit="create(list)"
+      input type="text" ng-model="list.title"
+    span.glyphicon.glyphicon-remove.new-list-button ng-click="newList = false" ng-show="newList"
+    span.glyphicon.glyphicon-plus.new-list-button ng-click="newList = true" ng-hide="newList"
 
   p.separator-label Don't forget a thing!
