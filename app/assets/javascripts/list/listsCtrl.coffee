@@ -1,20 +1,20 @@
 angular.module('SimpleTask').controller 'ListsCtrl', ($scope, $http, List, Auth, $stateParams, $state, $urlRouter) ->
-  $scope.newList = {}
   $scope.editedListID = null
   $scope.oldSlug = null
   $scope.oldTitle = null
   $scope.activeSlug = $state.params.list_slug
   $scope.signedIn = Auth.isAuthenticated
   $scope.lists = []
+  $scope.newList = false
 
 
   List.index().success (response) ->
     $scope.lists = response
 
   $scope.create = (list) ->
-    List.create($scope.newList).success (response) ->
+    List.create(list).success (response) ->
       $scope.lists.push response
-      $scope.newList = {}
+      $scope.newList = false;
 
   $scope.edit = (list) ->
     $scope.editedListID = list.id
@@ -44,6 +44,7 @@ angular.module('SimpleTask').controller 'ListsCtrl', ($scope, $http, List, Auth,
         $state.go 'index'
 
   $scope.$on '$stateChangeSuccess', (e) ->
+    $scope.newList = false
     $scope.activeSlug = $state.params.list_slug
     $scope.editedListID = null
     if $state.current.name == 'index'
