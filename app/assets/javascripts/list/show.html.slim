@@ -20,16 +20,19 @@ div ng-repeat="task in list.tasks | filter: { active: true }"
       input type="submit" value="Save"
       input type="button" ng-click="cancelEdit(task)" value="Cancel"
 
-h1 Completed
-
-div ng-repeat="task in list.tasks | filter: { active: false }"
-  p
-    | {{ task.title }}
-
 form ng-submit="create()"
-  legend New task
-  label Title
-  input type="text" ng-model="newTask.title"
-  br
-  input type="submit" value="Save"
+    legend New task
+    label Title
+    input type="text" ng-model="newTask.title"
+    br
+    input type="submit" value="Save"
+
+br
+button type="button" ng-click="showMe=true" Completed tasks
+
+div ng-show="showMe"
+  div ng-repeat="task in list.tasks | filter: { active: false }"
+    p
+      | {{ task.title + ", " + (task.updated_at | date: format : shortDate) }}
+
 
