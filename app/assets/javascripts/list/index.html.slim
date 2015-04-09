@@ -3,7 +3,10 @@ div.menu-container ng-show="signedIn()"
   div ng-include="'auth/user_menu.html'"
 
   p.separator-label Your lists
-  div.list-item ng-class="{ 'active-list': list.slug == activeSlug }" ng-repeat="list in lists"
+  div.search-box
+    input placeholder="Search" ng-model="searchText"
+
+  div.list-item ng-class="{ 'active-list': list.slug == activeSlug }" ng-repeat="list in lists | filter: {title: searchText}"
     div ng-switch="editedListID == list.id"
 
       div.list-link ng-switch-when="false" ui-sref="index.list({list_slug: list.slug})"
@@ -22,7 +25,7 @@ div.menu-container ng-show="signedIn()"
 
   div.new-list
     form.new-list-form ng-show="newList" ng-submit="create(list)"
-      input type="text" ng-model="list.title"
+      input placeholder="New list" type="text" ng-model="list.title"
     span.glyphicon.glyphicon-remove.new-list-button ng-click="newList = false" ng-show="newList"
     span.glyphicon.glyphicon-plus.new-list-button ng-click="newList = true" ng-hide="newList"
 
