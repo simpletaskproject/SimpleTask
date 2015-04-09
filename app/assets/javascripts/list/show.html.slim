@@ -1,7 +1,7 @@
 h1
   | {{ list.title }}
 
-div ng-repeat="task in list.tasks | filter: { active: true }"
+div ng-repeat="task in tasks | filter: { active: true }"
   p
     | {{ task.title }}
     button type="button" ng-click="destroy(task)" &times;
@@ -31,7 +31,7 @@ br
 button type="button" ng-click="showMe = !showMe" Completed tasks
 
 div ng-show="showMe"
-  div ng-repeat="task in list.tasks | filter: { active: false }"
+  div ng-repeat="task in tasks | filter: { active: false }"
     p
       | {{ task.title + ", " + (task.updated_at | date: format : shortDate) }}
 
