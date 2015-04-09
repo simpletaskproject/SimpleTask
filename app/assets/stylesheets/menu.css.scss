@@ -127,7 +127,7 @@
 // NEW LIST
 .new-list {
   height: 30px;
-  padding: 5px;
+  padding: 2px;
   padding-left: 30px;
   .new-list-form {
     display: inline;
@@ -137,6 +137,7 @@
     }
   }
   .new-list-button {
+    padding: 3px;
     font-size: 1.3em;
     float: right;
     display: inline;
@@ -144,3 +145,4 @@
     cursor: hand;
   }
 }
+// NEW LIST
