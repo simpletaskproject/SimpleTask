@@ -3,9 +3,9 @@ div.menu-container ng-show="signedIn()"
   div ng-include="'auth/user_menu.html'"
 
   p.separator-label Your lists
+  input.search-box ng-model="searchText"
 
-
-  div.list-item ng-class="{ 'active-list': list.slug == activeSlug }" ng-repeat="list in lists"
+  div.list-item ng-class="{ 'active-list': list.slug == activeSlug }" ng-repeat="list in lists | filter: {title: searchText}"
     div ng-switch="editedListID == list.id"
 
       div.list-link ng-switch-when="false" ui-sref="index.list({list_slug: list.slug})"
