@@ -28,7 +28,7 @@ form ng-submit="create()"
     input type="submit" value="Save"
 
 br
-button type="button" ng-click="showMe=true" Completed tasks
+button type="button" ng-click="showMe = !showMe" Completed tasks
 
 div ng-show="showMe"
   div ng-repeat="task in list.tasks | filter: { active: false }"
