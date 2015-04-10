@@ -2,7 +2,7 @@ angular.module('SimpleTask').service 'Task', ($http, $stateParams) ->
   base = "/api/lists"
 
   index: (scope) ->
-    $http.get("api/tasks")
+    $http.get("api/tasks/#{scope}")
   create: (task) ->
     $http.post("#{base}/#{$stateParams.list_slug}/tasks", task: task)
   update: (task) ->
