@@ -3,9 +3,13 @@ angular.module('SimpleTask').controller 'TasksCtrl', ($scope, $http, List, Task,
   $scope.editedTaskID = null
   $scope.oldTitle = null
 
-  List.show($stateParams.list_slug).success (response) ->
-    $scope.list = response
-    $scope.tasks = $scope.list.tasks
+  if $stateParams.list_slug != 'all'
+    List.show($stateParams.list_slug).success (response) ->
+      $scope.list = response
+      $scope.tasks = $scope.list.tasks
+  else
+    Task.index($stateParams.list_slug).success (response) ->
+      $scope.tasks = response
 
 
   $scope.create = (task) ->
