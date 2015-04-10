@@ -10,7 +10,7 @@ class List < ActiveRecord::Base
   friendly_id :title, :use => [:scoped, :slugged], :scope => :user_id
 
   def as_json(options={})
-    super(:include => :tasks)
+    super(include: { tasks: { include: { list: { only: :slug } } } } )
   end
 
   def should_generate_new_friendly_id?

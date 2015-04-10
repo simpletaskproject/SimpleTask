@@ -4,4 +4,8 @@ class Task < ActiveRecord::Base
   belongs_to :list
   delegate :user, to: :list
   scope :today, -> { where(date: Date.today)  }
+
+  def as_json(options={})
+    super(include: { list: { only: :slug } } )
+  end
 end
