@@ -16,6 +16,9 @@ gem 'friendly_id', '~> 5.1.0'
 gem 'angular_rails_csrf'
 gem 'faker'
 gem 'angular-ui-bootstrap-rails'
+gem 'omniauth-github'
+gem 'omniauth'
+gem 'therubyracer'
 
 gem 'sdoc', '~> 0.4.0',        group: :doc
 
