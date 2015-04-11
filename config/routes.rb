@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
-  devise_for :users
+
+  devise_for :users, :controllers => { :omniauth_callbacks => "callbacks" }
 
   namespace :api, defaults: { format: :json } do
     resources :lists, only: [:index, :show, :create, :update, :destroy] do
