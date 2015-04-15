@@ -7,7 +7,9 @@ div.menu-container ng-show="signedIn()"
     input placeholder="Search" ng-model="searchText"
 
 
-  div.btn.btn-default ui-sref="index.list({ list_slug: 'all' })" All
+  div.list-item
+    div.list-link ui-sref="index.list({ list_slug: 'all' })"
+      | All
 
   div.list-item ng-class="{ 'active-list': list.slug == activeSlug }" ng-repeat="list in lists | filter: {title: searchText}"
     div ng-switch="editedListID == list.id"
