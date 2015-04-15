@@ -1,8 +1,17 @@
-h1 REGISTER
-
-form ng-submit="register()"
-  input type="email" ng-model="user.email"
-  input type="password" ng-model="user.password"
-  input type="submit" value="Submit"
-
-a ui-sref="index.login" Login?
+div.container-fluid.user-form
+  form.form-horizontal ng-submit="register()"
+    legend REGISTER
+    div.form-group
+      label.col-xs-3.control-label Email
+      div.col-xs-9
+        input.form-control type="email" ng-model="user.email"
+    div.form-group
+      label.col-xs-3.control-label Password
+      div.col-xs-9
+        input.form-control type="password" ng-model="user.password"
+    div.form-group
+      div.col-xs-offset-3.col-xs-9
+        button.btn.btn-default type="submit" Register
+    div.form-group
+      div.col-xs-offset-3.col-xs-9
+        a ui-sref="index.login" Log in?
