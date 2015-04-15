@@ -1,0 +1,20 @@
+@mixin rgba($r, $g, $b, $a) {
+  background-color: rgb($r, $g, $b);
+  background-color: rgba($r, $g, $b, $a);
+}
+
+.user-form {
+  form {
+    width: 40ch;
+    position: relative;
+    transform: translateY(-50%);
+    margin: auto;
+    margin-top: 28.125%;
+    left: -110px;
+    padding: 5px 10px 5px 10px;
+
+    border-radius: 10px;
+    box-shadow: 0px 0px 5px black inset;
+    @include rgba(240, 240, 240, 0.8);
+  }
+}
