@@ -1,23 +1,21 @@
-div
-  accordion close-other="true"
-    accordion-group heading="{{task.title}}" ng-repeat="task in tasks | filter: { active: true }"
-      p
-        | {{ task.title }}
-        button type="button" ng-click="destroy(task)" &times;
-        button type="button" ng-click="edit(task)" Edit
-        button type="button" ng-click="complete(task)" Complete
+div ng-repeat="task in tasks | filter: { active: true }"
+  p
+    | {{ task.title }}
+    button type="button" ng-click="destroy(task)" &times;
+    button type="button" ng-click="edit(task)" Edit
+    button type="button" ng-click="complete(task)" Complete
 
-      div ng-if="editedTaskID == task.id"
-        form ng-submit="update(task)"
-          legend Edit task
-          label Ttitle
-          input type="text" ng-model="task.title"
-          br
-          label Date
-          input type="date" ng-model="task.date"
-          br
-          input type="submit" value="Save"
-          input type="button" ng-click="cancelEdit(task)" value="Cancel"
+  div ng-if="editedTaskID == task.id"
+    form ng-submit="update(task)"
+      legend Edit task
+      label Ttitle
+      input type="text" ng-model="task.title"
+      br
+      label Date
+      input type="date" ng-model="task.date"
+      br
+      input type="submit" value="Save"
+      input type="button" ng-click="cancelEdit(task)" value="Cancel"
 
 form ng-submit="create()"
     legend New task
