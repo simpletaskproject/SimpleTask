@@ -3,6 +3,7 @@ form ng-submit="create()"
 br
 
 div ng-repeat="task in tasks | filter: { active: true }"
+
   .button.btn.btn-default.glyphicon.glyphicon-unchecked ng-click="complete(task)" {{ task.title }}
   .button.btn.btn-default.btn-sm.glyphicon.glyphicon-cog ng-click="edit(task)"
   .button.btn.btn-default.btn-sm.glyphicon.glyphicon-trash ng-click="destroy(task)"
@@ -23,8 +24,8 @@ div ng-repeat="task in tasks | filter: { active: true }"
 
 div ng-show="showMe"
   div ng-repeat="task in tasks | filter: { active: false }"
-    .btn.btn-default.disabled.glyphicon.glyphicon-ok
-      | {{ task.title }}
+    .btn.btn-default.btn-block.disabled.glyphicon.glyphicon-ok
+      | {{ task.title }}, {{ task.updated_at | date : format : shortDate }}
 
 
 
