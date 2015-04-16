@@ -3,10 +3,9 @@ form ng-submit="create()"
 br
 
 div ng-repeat="task in tasks | filter: { active: true }"
-  .task
-    .button.btn.btn-default.glyphicon.glyphicon-unchecked ng-click="complete(task)" {{ task.title }}
-    .button.btn.btn-default.btn-sm.glyphicon.glyphicon-cog ng-click="edit(task)"
-    .button.btn.btn-default.btn-sm.glyphicon.glyphicon-trash ng-click="destroy(task)"
+  .button.btn.btn-default.glyphicon.glyphicon-unchecked ng-click="complete(task)" {{ task.title }}
+  .button.btn.btn-default.btn-sm.glyphicon.glyphicon-cog ng-click="edit(task)"
+  .button.btn.btn-default.btn-sm.glyphicon.glyphicon-trash ng-click="destroy(task)"
 
   div ng-if="editedTaskID == task.id"
     form ng-submit="update(task)"
@@ -20,11 +19,12 @@ div ng-repeat="task in tasks | filter: { active: true }"
       input type="submit" value="Save"
       input type="button" ng-click="cancelEdit(task)" value="Cancel"
 
-button type="button" ng-click="showMe = !showMe" Completed tasks
+.button.btn.btn-primary ng-click="showMe = !showMe" Completed tasks
 
 div ng-show="showMe"
   div ng-repeat="task in tasks | filter: { active: false }"
-    p
-      | {{ task.title + ", " + (task.updated_at | date: format : shortDate) }}
+    .btn.btn-default.disabled.glyphicon.glyphicon-ok
+      | {{ task.title }}
+
 
 
