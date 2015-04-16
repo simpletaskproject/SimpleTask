@@ -24,8 +24,10 @@ div ng-repeat="task in tasks | filter: { active: true }"
 
 div ng-show="showMe"
   div ng-repeat="task in tasks | filter: { active: false }"
-    .btn.btn-default.btn-block.disabled.glyphicon.glyphicon-ok
-      | {{ task.title }}, {{ task.updated_at | date : format : shortDate }}
+    .btn.btn-default.btn-block.disabled
+      .text-left
+        .glyphicon.glyphicon-ok
+        | {{ task.title }}, {{ task.updated_at | date : format : shortDate }}
 
 
 
