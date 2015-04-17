@@ -21,7 +21,7 @@ div.menu-container ng-show="signedIn()"
       div.list-edit ng-switch-when="true"
         form ng-hide="confirmDelete" ng-submit="update(list)"
           input type="text" ng-model="list.title"
-          div.glyphicon.glyphicon-remove.remove-button ng-click="confirmDelete = true"
+          div.glyphicon.glyphicon-trash.remove-button ng-click="confirmDelete = true"
         div.confirm-delete ng-show="confirmDelete"
           p Are you sure?
           span.glyphicon.glyphicon-ok ng-click="destroy(list)"
