@@ -1,17 +1,14 @@
 .container-fluid
-  .col-sm-offset-1.col-sm-10
-    form ng-submit="create()"
-      input.form-control type="text" ng-model="newTask.title" placeholder="Add task to {{ list.title }}..."
-    br
+  form.add-task ng-submit="create()"
+    input.form-control type="text" ng-model="newTask.title" placeholder="Add task to {{ list.title }}..."
 
-  .col-sm-offset-1.col-sm-10 ng-repeat="task in tasks | filter: { active: true }"
-    .btn.btn-default.btn-block
-      .text-left
-        .glyphicon.glyphicon-unchecked ng-click="complete(task)"
-        | {{ task.title }}
-        .span style="float: right"
-          .glyphicon.glyphicon-cog ng-click="edit(task)"
-          .glyphicon.glyphicon-trash ng-click="destroy(task)"
+  div.btn.btn-default.btn-block.task-item ng-repeat="task in tasks | filter: { active: true }"
+    .task-title
+      .glyphicon.glyphicon-unchecked ng-click="complete(task)" style="display: inline-block; float: left;"
+      | {{ task.title }}
+    .task-actions
+      .glyphicon.glyphicon-cog ng-click="edit(task)"
+      .glyphicon.glyphicon-trash ng-click="destroy(task)"
 
     div ng-if="editedTaskID == task.id"
       form ng-submit="update(task)"
