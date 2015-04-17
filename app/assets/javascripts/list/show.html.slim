@@ -26,9 +26,9 @@
         input type="button" ng-click="cancelEdit(task)" value="Cancel"
 
   .col-sm-offset-1.col-sm-10
-    .button.btn.btn-primary ng-click="showMe = !showMe" Completed tasks
+    .button.btn.btn-primary ng-click="showCompletedTasks = !showCompletedTasks" Completed tasks
 
-    div ng-show="showMe"
+    div ng-show="showCompletedTasks"
       div ng-repeat="task in tasks | filter: { active: false }"
         .btn.btn-default.btn-block.disabled
           .text-left
