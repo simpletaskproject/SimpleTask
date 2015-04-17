@@ -5,6 +5,15 @@
 }
 // MAIN CONTAINER CLASS //
 
+// MIXINS
+@mixin gradient($color1, $color2) {
+  background: -webkit-linear-gradient($color1, $color2); /* For Safari 5.1 to 6.0 */
+  background: -o-linear-gradient($color1, $color2); /* For Opera 11.1 to 12.0 */
+  background: -moz-linear-gradient($color1, $color2); /* For Firefox 3.6 to 15 */
+  background: linear-gradient($color1, $color2); /* Standard syntax */
+}
+//
+
 // ADD TASK AND TASK ITEM
 .add-task, .task-item {
   .glyphicon {
@@ -18,10 +27,10 @@
   padding-bottom: 15px;
 
   input {
-    background-color: #A8A8A8;
+    @include gradient(#707070, #909090);
     color: white;
     border: none;
-    box-shadow: 0px 0px 3px black inset;
+    box-shadow: 0px 0px 3px #303030 inset;
   }
   // PLACEHOLDER STYLES
   *::-webkit-input-placeholder {
@@ -45,6 +54,8 @@
 .task-item {
   padding-bottom: 5px;
   overflow: auto;
+
+  @include gradient(#E0E0E0, white);
 
   .task-title {
     float: left;
