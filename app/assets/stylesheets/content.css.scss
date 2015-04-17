@@ -23,36 +23,43 @@
 }
 
 .add-task {
-  padding-top: 15px;
-  padding-bottom: 15px;
+  margin-top: 15px;
+  margin-bottom: 15px;
 
   input {
-    @include gradient(#787878, #989898);
+    height: 100%;
+    padding-top: 10px;
+    padding-bottom: 10px;
+
+    @include gradient(#808080, #909090);
     color: white;
     border: none;
     box-shadow: 0px 0px 3px #303030 inset;
   }
   // PLACEHOLDER STYLES
   *::-webkit-input-placeholder {
-    color: white;
+    color: #E0E0E0;
   }
   *:-moz-placeholder {
     /* FF 4-18 */
-    color: white;
+    color: #E0E0E0;
   }
   *::-moz-placeholder {
     /* FF 19+ */
-    color: white;
+    color: #E0E0E0;
   }
   *:-ms-input-placeholder {
     /* IE 10+ */
-    color: white;
+    color: #E0E0E0;
   }
   // PLACEHOLDER STYLES
 }
 
 .task-item {
-  padding-bottom: 5px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+
+  margin-bottom: 5px;
   overflow: auto;
 
   @include gradient(#E0E0E0, white);
