@@ -2,8 +2,7 @@ class Api::TasksController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    scope = params[:scope]
-    render json: current_user.tasks.send(scope)
+    render json: current_user.tasks.send(params[:scope])
   end
 
   def create
@@ -32,10 +31,10 @@ class Api::TasksController < ApplicationController
   end
 
   def list
-    current_user.lists.friendly.find(params[:list_id])
+    @list ||= current_user.lists.friendly.find(params[:list_id])
   end
 
   def task
-    current_user.tasks.find(params[:id])
+    @task ||= current_user.tasks.find(params[:id])
   end
 end
