@@ -3,11 +3,11 @@ class List < ActiveRecord::Base
 
   validates :title, presence: true
   validates :user_id, presence: true
-  validates_uniqueness_of :title, :scope => :user
+  validates_uniqueness_of :title, scope: :user
   belongs_to :user
   has_many :tasks, dependent: :destroy
 
-  friendly_id :title, :use => [:scoped, :slugged], :scope => :user_id
+  friendly_id :title, use: [:scoped, :slugged], scope: :user_id
 
   def as_json(options={})
     super(include: { tasks: { include: { list: { only: :slug } } } } )
