@@ -1,10 +1,10 @@
-div.container-fluid
-  div.col-sm-offset-1.col-sm-10
+.container-fluid
+  .col-sm-offset-1.col-sm-10
     form ng-submit="create()"
       input.form-control type="text" ng-model="newTask.title" placeholder="Add task to {{ list.title }}..."
     br
 
-  div.col-sm-offset-1.col-sm-10 ng-repeat="task in tasks | filter: { active: true }"
+  .col-sm-offset-1.col-sm-10 ng-repeat="task in tasks | filter: { active: true }"
     .btn.btn-default.btn-block
       .text-left
         .glyphicon.glyphicon-unchecked ng-click="complete(task)"
@@ -25,11 +25,12 @@ div.container-fluid
         input type="submit" value="Save"
         input type="button" ng-click="cancelEdit(task)" value="Cancel"
 
-  .button.btn.btn-primary ng-click="showMe = !showMe" Completed tasks
+  .col-sm-offset-1.col-sm-10
+    .button.btn.btn-primary ng-click="showMe = !showMe" Completed tasks
 
-  div ng-show="showMe"
-    div ng-repeat="task in tasks | filter: { active: false }"
-      .btn.btn-default.btn-block.disabled
-        .text-left
-          .glyphicon.glyphicon-ok
-          | {{ task.title }}, {{ task.updated_at | date : format : shortDate }}
+    div ng-show="showMe"
+      div ng-repeat="task in tasks | filter: { active: false }"
+        .btn.btn-default.btn-block.disabled
+          .text-left
+            .glyphicon.glyphicon-ok
+            | {{ task.title }}, {{ task.updated_at | date : format : shortDate }}
