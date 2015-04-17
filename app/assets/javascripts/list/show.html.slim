@@ -29,5 +29,5 @@
       div ng-repeat="task in tasks | filter: { active: false }"
         .btn.btn-default.btn-block.disabled
           .text-left
-            .glyphicon.glyphicon-ok
+            .glyphicon.glyphicon-check
             | {{ task.title }}, {{ task.updated_at | date : format : shortDate }}
