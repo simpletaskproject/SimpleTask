@@ -4,12 +4,12 @@ angular.module('SimpleTask').controller 'TasksCtrl', ($scope, $http, List, Task,
   $scope.oldTitle = null
 
   if $stateParams.list_slug != 'all'
-    List.show($stateParams.list_slug).success (response) ->
-      $scope.list = response
+    List.show($stateParams.list_slug).success (task) ->
+      $scope.list = task
       $scope.tasks = $scope.list.tasks
   else
-    Task.index($stateParams.list_slug).success (response) ->
-      $scope.tasks = response
+    Task.index($stateParams.list_slug).success (task) ->
+      $scope.tasks = task
 
 
   addHours = (date) ->
@@ -18,8 +18,8 @@ angular.module('SimpleTask').controller 'TasksCtrl', ($scope, $http, List, Task,
     date.toISOString().substring(0,10)
 
   $scope.create = (task) ->
-    Task.create($scope.newTask).success (response) ->
-      $scope.tasks.push response
+    Task.create($scope.newTask).success (task) ->
+      $scope.tasks.push task
       $scope.newTask = {}
 
   $scope.edit = (task) ->
@@ -34,18 +34,18 @@ angular.module('SimpleTask').controller 'TasksCtrl', ($scope, $http, List, Task,
 
   $scope.update = (task) ->
     addHours(task.date)
-    Task.update(task).success (response) ->
+    Task.update(task).success (task) ->
       index = $scope.tasks.indexOf(task)
       $scope.tasks.splice(index, 1, task)
       $scope.editedTaskID = null
 
   $scope.destroy = (task) ->
-    Task.destroy(task).success (response) ->
+    Task.destroy(task).success (task) ->
       index = $scope.tasks.indexOf(task)
       $scope.tasks.splice(index,1)
 
   $scope.complete = (task) ->
-    Task.complete(task).success (response) ->
+    Task.complete(task).success (task) ->
       index = $scope.tasks.indexOf(task)
       $scope.tasks.splice(index, 1)
-      $scope.tasks.push response
+      $scope.tasks.push task
