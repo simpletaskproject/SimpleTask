@@ -4,3 +4,29 @@
   height: 100vh;
 }
 // MAIN CONTAINER CLASS //
+
+// ADD TASK AND TASK ITEM
+.add-task, .task-item {
+  .glyphicon {
+    font-size: 1.3em;
+    margin-right: 5px;
+  }
+}
+
+.add-task {
+  padding-top: 15px;
+  padding-bottom: 15px;
+}
+
+.task-item {
+  padding-bottom: 5px;
+  overflow: auto;
+
+  .task-title {
+    float: left;
+  }
+  .task-actions {
+    float: right;
+  }
+}
+// ADD TASK AND TASK ITEM
