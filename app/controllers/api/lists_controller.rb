@@ -14,9 +14,8 @@ class Api::ListsController < ApplicationController
   end
 
   def update
-    updated_list = list
-    updated_list.update!(list_params)
-    render json: updated_list
+    list.update!(list_params)
+    render json: list
   end
 
   def destroy
@@ -31,6 +30,6 @@ class Api::ListsController < ApplicationController
     end
 
     def list
-      current_user.lists.friendly.find(params[:id])
+      @list ||= current_user.lists.friendly.find(params[:id])
     end
 end
