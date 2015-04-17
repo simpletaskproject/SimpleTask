@@ -1,4 +1,4 @@
-angular.module('SimpleTask').controller 'TasksCtrl', ($scope, $http, List, Task, addHours, Auth, $stateParams) ->
+angular.module('SimpleTask').controller 'TasksCtrl', ($scope, $http, List, Task, Auth, $stateParams) ->
   $scope.newTask = {}
   $scope.editedTaskID = null
   $scope.oldTitle = null
@@ -11,6 +11,11 @@ angular.module('SimpleTask').controller 'TasksCtrl', ($scope, $http, List, Task,
     Task.index($stateParams.list_slug).success (response) ->
       $scope.tasks = response
 
+
+  addHours = (date) ->
+    date.setHours(date.getHours() + 12)
+    date.setMinutes(date.getMinutes() - date.getTimezoneOffset())
+    date.toISOString().substring(0,10)
 
   $scope.create = (task) ->
     Task.create($scope.newTask).success (response) ->
@@ -28,7 +33,7 @@ angular.module('SimpleTask').controller 'TasksCtrl', ($scope, $http, List, Task,
 
 
   $scope.update = (task) ->
-    task.date = addHours(task.date)
+    addHours(task.date)
     Task.update(task).success (response) ->
       index = $scope.tasks.indexOf(task)
       $scope.tasks.splice(index, 1, task)
