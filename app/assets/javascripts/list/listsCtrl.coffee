@@ -8,12 +8,12 @@ angular.module('SimpleTask').controller 'ListsCtrl', ($scope, $http, List, Auth,
   $scope.newList = false
 
 
-  List.index().success (response) ->
-    $scope.lists = response
+  List.index().success (lists) ->
+    $scope.lists = lists
 
   $scope.create = (list) ->
-    List.create(list).success (response) ->
-      $scope.lists.push response
+    List.create(list).success (newList) ->
+      $scope.lists.push newList
       $scope.newList = false;
 
   $scope.edit = (list) ->
@@ -28,16 +28,15 @@ angular.module('SimpleTask').controller 'ListsCtrl', ($scope, $http, List, Auth,
     $scope.oldTitle = null
 
   $scope.update = (list) ->
-    List.update(list, $scope.oldSlug).success (response) ->
-      list.slug = response.slug
+    List.update(list, $scope.oldSlug).success (updatedList) ->
       index = $scope.lists.indexOf(list)
-      $scope.lists.splice(index, 1, list)
+      $scope.lists.splice(index, 1, updatedList)
       $scope.editedListID = null
       $scope.oldSlug = null
-      $state.go('index.list', { list_slug: list.slug })
+      $state.go('index.list', { list_slug: updatedList.slug })
 
   $scope.destroy = (list) ->
-    List.destroy(list).success (response) ->
+    List.destroy(list).success ->
       index = $scope.lists.indexOf(list)
       $scope.lists.splice(index,1)
       if $scope.activeSlug == list.slug
