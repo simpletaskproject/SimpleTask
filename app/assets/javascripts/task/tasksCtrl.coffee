@@ -35,18 +35,18 @@ angular.module('SimpleTask').controller 'TasksCtrl', ($scope, $http, List, Task,
 
   $scope.update = (task) ->
     addHours(task.date)
-    Task.update(task).success (task) ->
+    Task.update(task).success (newTask) ->
       index = $scope.tasks.indexOf(task)
-      $scope.tasks.splice(index, 1, task)
+      $scope.tasks.splice(index, 1, newTask)
       $scope.editedTaskID = null
 
   $scope.destroy = (task) ->
-    Task.destroy(task).success (task) ->
+    Task.destroy(task).success ->
       index = $scope.tasks.indexOf(task)
       $scope.tasks.splice(index,1)
 
   $scope.complete = (task) ->
-    Task.complete(task).success (task) ->
+    Task.complete(task).success (newTask) ->
       index = $scope.tasks.indexOf(task)
       $scope.tasks.splice(index, 1)
-      $scope.tasks.push task
+      $scope.tasks.push newTask
