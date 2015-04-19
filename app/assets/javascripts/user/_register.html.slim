@@ -1,21 +1,18 @@
 div.container-fluid.user-form
   form.form-horizontal ng-submit="register()"
     legend REGISTER
-    div.form-group
-      label.col-xs-3.control-label Email
-      div.col-xs-9
-        input.form-control type="email" ng-model="user.email"
-    div.form-group
-      label.col-xs-3.control-label Password
-      div.col-xs-9
-        input.form-control type="password" ng-model="user.password"
-    div.form-group
-      label.col-xs-3.control-label Confirmation
-      div.col-xs-9
-        input.form-control type="password" ng-model="user.password_confirmation"
-    div.form-group
-      div.col-xs-offset-3.col-xs-9
+    .form-group
+      .col-xs-12
+        input.form-control type="email" placeholder="Email" ng-model="user.email"
+    .form-group
+      .col-xs-12
+        input.form-control type="password" placeholder="Passowrd" ng-model="user.password"
+    .form-group
+      .col-xs-12
+        input.form-control type="password" placeholder="Password confirmation" ng-model="user.password_confirmation"
+    .form-group
+      .col-xs-3
         button.btn.btn-default type="submit" Register
-    div.form-group
-      div.col-xs-offset-3.col-xs-9
+    .form-group
+      .col-xs-3
         a ui-sref="index.login" Log in?
