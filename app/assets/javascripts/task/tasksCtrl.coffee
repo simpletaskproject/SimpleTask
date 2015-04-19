@@ -2,8 +2,9 @@ angular.module('SimpleTask').controller 'TasksCtrl', ($scope, $http, List, Task,
   $scope.newTask = {}
   $scope.editedTaskID = null
   $scope.oldTitle = null
+  specialSlugs = ['all','today']
 
-  if $stateParams.list_slug != 'all'
+  if specialSlugs.indexOf($stateParams.list_slug) == -1
     List.show($stateParams.list_slug).success (task) ->
       $scope.list = task
       $scope.tasks = $scope.list.tasks

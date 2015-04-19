@@ -11,6 +11,10 @@ div.menu-container ng-show="signedIn()"
     div.list-link ui-sref="index.list({ list_slug: 'all' })"
       | All
 
+  div.list-item
+    div.list-link ui-sref="index.list({ list_slug: 'today' })"
+      | Today
+
   div.list-item ng-class="{ 'active-list': list.slug == activeSlug }" ng-repeat="list in lists | filter: {title: searchText}"
     div ng-switch="editedListID == list.id"
 
