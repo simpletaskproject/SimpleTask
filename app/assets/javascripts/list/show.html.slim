@@ -1,4 +1,5 @@
 .container-fluid
+  br
   div ng-show="list.title"
     form.add-task ng-submit="create()"
       input.form-control type="text" ng-model="newTask.title" placeholder="Add task to {{ list.title }}..."
@@ -23,12 +24,13 @@
         input type="submit" value="Save"
         input type="button" ng-click="cancelEdit(task)" value="Cancel"
 
-  .col-sm-offset-1.col-sm-10
-    .button.btn.btn-primary ng-click="showCompletedTasks = !showCompletedTasks" Completed tasks
-
-    div ng-show="showCompletedTasks"
-      div ng-repeat="task in tasks | filter: { active: false }"
-        .btn.btn-default.btn-block.disabled
-          .text-left
-            .glyphicon.glyphicon-check
-            | {{ task.title }}, {{ task.updated_at | date : format : shortDate }}
+  br
+  .button.btn.btn-primary ng-click="showCompletedTasks = !showCompletedTasks" Completed tasks
+  br
+  br
+  div ng-show="showCompletedTasks"
+    div ng-repeat="task in tasks | filter: { active: false }"
+      .btn.btn-default.btn-block.task-item.disabled
+        .text-left
+          .glyphicon.glyphicon-check
+          | {{ task.title }}, {{ task.updated_at | date : format : shortDate }}
