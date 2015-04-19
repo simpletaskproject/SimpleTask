@@ -1,6 +1,7 @@
 .container-fluid
-  form.add-task ng-submit="create()"
-    input.form-control type="text" ng-model="newTask.title" placeholder="Add task to {{ list.title }}..."
+  div ng-show="list.title"
+    form.add-task ng-submit="create()"
+      input.form-control type="text" ng-model="newTask.title" placeholder="Add task to {{ list.title }}..."
 
   div.btn.btn-default.btn-block.task-item ng-repeat="task in tasks | filter: { active: true }"
     .task-title
