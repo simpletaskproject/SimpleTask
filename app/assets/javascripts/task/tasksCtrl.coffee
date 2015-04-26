@@ -1,7 +1,7 @@
 angular.module('SimpleTask').controller 'TasksCtrl', ($scope, $http, List, Task, Auth, $stateParams) ->
   $scope.newTask = {}
   $scope.editedTaskID = null
-  $scope.oldTitle = null
+  oldTask = {}
   specialSlugs = ['all','today']
   $scope.mydp = {}
 
@@ -29,12 +29,13 @@ angular.module('SimpleTask').controller 'TasksCtrl', ($scope, $http, List, Task,
 
   $scope.edit = (task) ->
     $scope.editedTaskID = task.id
-    $scope.oldTitle = task.title
+    oldTask = angular.copy(task)
 
   $scope.cancelEdit = (task) ->
-    task.title = $scope.oldTitle
+    index = $scope.tasks.indexOf(task)
+    $scope.tasks.splice(index, 1, oldTask)
     $scope.editedTaskID = null
-    $scope.oldTitle = null
+    oldTask = {}
 
 
   $scope.update = (task) ->
