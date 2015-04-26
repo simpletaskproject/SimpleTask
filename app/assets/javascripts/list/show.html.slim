@@ -4,13 +4,14 @@
     form.add-task ng-submit="create()"
       input.form-control type="text" ng-model="newTask.title" placeholder="Add task to {{ list.title }}..."
 
-  div.btn.btn-default.btn-block.task-item ng-repeat="task in tasks | filter: { active: true }"
-    .task-title
-      .glyphicon.glyphicon-unchecked ng-click="complete(task)" style="display: inline-block; float: left;"
-      | {{ task.title }}
-    .task-actions
-      .glyphicon.glyphicon-cog ng-click="edit(task)"
-      .glyphicon.glyphicon-trash ng-click="destroy(task)"
+  div ng-repeat="task in tasks | filter: { active: true }"
+    .btn.btn-default.btn-block.task-item
+      .task-title
+        .glyphicon.glyphicon-unchecked ng-click="complete(task)" style="display: inline-block; float: left;"
+        | {{ task.title }}
+      .task-actions
+        .glyphicon.glyphicon-cog ng-click="edit(task)"
+        .glyphicon.glyphicon-trash ng-click="destroy(task)"
 
     div ng-if="editedTaskID == task.id"
       form ng-submit="update(task)"
@@ -18,8 +19,11 @@
         label Ttitle
         input type="text" ng-model="task.title"
         br
-        label Date
-        input type="date" ng-model="task.date"
+        //label Date
+        //input type="date" ng-model="task.date"
+        //br
+        input.form-control type="text" datepicker-popup="dd-MMMM-yyyy" ng-model="task.date" is-open="mydp.opened" datepicker-options="dateOptions" show-button-bar="false" close-text="Close"
+        button.btn.btn-default.glyphicon.glyphicon-calendar ng-click="open($event)"
         br
         input type="submit" value="Save"
         input type="button" ng-click="cancelEdit(task)" value="Cancel"

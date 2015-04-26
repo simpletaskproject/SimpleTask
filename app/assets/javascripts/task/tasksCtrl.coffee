@@ -3,6 +3,7 @@ angular.module('SimpleTask').controller 'TasksCtrl', ($scope, $http, List, Task,
   $scope.editedTaskID = null
   $scope.oldTitle = null
   specialSlugs = ['all','today']
+  $scope.mydp = {}
 
   if specialSlugs.indexOf($stateParams.list_slug) == -1
     List.show($stateParams.list_slug).success (list) ->
@@ -12,11 +13,14 @@ angular.module('SimpleTask').controller 'TasksCtrl', ($scope, $http, List, Task,
     Task.index($stateParams.list_slug).success (tasks) ->
       $scope.tasks = tasks
 
+  $scope.open = ($event) ->
+    $event.preventDefault()
+    $event.stopPropagation()
+    $scope.mydp.opened = true
 
-  addHours = (date) ->
-    date.setHours(date.getHours() + 12)
-    date.setMinutes(date.getMinutes() - date.getTimezoneOffset())
-    date.toISOString().substring(0,10)
+  $scope.dateOptions =
+    formatYear: 'yy',
+    startingDay: 1
 
   $scope.create = (task) ->
     Task.create($scope.newTask).success (newTask) ->
@@ -34,7 +38,6 @@ angular.module('SimpleTask').controller 'TasksCtrl', ($scope, $http, List, Task,
 
 
   $scope.update = (task) ->
-    addHours(task.date)
     Task.update(task).success (updatedTask) ->
       index = $scope.tasks.indexOf(task)
       $scope.tasks.splice(index, 1, updatedTask)
