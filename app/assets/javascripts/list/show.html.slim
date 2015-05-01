@@ -16,20 +16,19 @@
 
       div.task-details ng-if="openedTaskID == task.id" ng-switch="editedTaskID == task.id"
         form ng-submit="update(task)" ng-switch-when="true"
-          p Edit task
-          label Title
-          input type="text" ng-model="task.title"
-          br
-          //label Date
-          //input type="date" ng-model="task.date"
-          //br
+          input.form-control type="text" ng-model="task.title"
+          input.form-control type="text" ng-model="task.description"
           input.form-control type="text" datepicker-popup="dd-MMMM-yyyy" ng-model="task.date" is-open="mydp.opened" datepicker-options="dateOptions" show-button-bar="false" close-text="Close"
           button.btn.btn-default.glyphicon.glyphicon-calendar ng-click="open($event)"
-          br
           input type="submit" value="Save"
           input type="button" ng-click="cancelEdit(task)" value="Cancel"
         div ng-switch-when="false"
-          p pimpek
+          .task-field.task-title-text.form-control
+            | {{ task.title }}
+          .task-field.task-description-text.form-control
+            | {{ task.description }}
+          .task-field.task-date-text.form-control
+            | {{ task.date }}
 
 
   br
