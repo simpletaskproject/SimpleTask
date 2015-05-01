@@ -4,6 +4,7 @@ angular.module('SimpleTask').controller 'TasksCtrl', ($scope, $http, List, Task,
   oldTask = {}
   specialSlugs = ['all','today']
   $scope.mydp = {}
+  $scope.openedTaskID = null
 
   if specialSlugs.indexOf($stateParams.list_slug) == -1
     List.show($stateParams.list_slug).success (list) ->
@@ -12,6 +13,9 @@ angular.module('SimpleTask').controller 'TasksCtrl', ($scope, $http, List, Task,
   else
     Task.index($stateParams.list_slug).success (tasks) ->
       $scope.tasks = tasks
+
+  $scope.openTask = (task) ->
+    $scope.openedTaskID = if $scope.openedTaskID == task.id then null else task.id
 
   $scope.open = ($event) ->
     $event.preventDefault()
