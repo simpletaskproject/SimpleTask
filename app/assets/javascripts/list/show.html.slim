@@ -14,8 +14,8 @@
           .glyphicon.glyphicon-cog ng-click="edit(task)"
           .glyphicon.glyphicon-trash ng-click="destroy(task)"
 
-      div.task-details ng-if="openedTaskID == task.id"
-        form ng-submit="update(task)"
+      div.task-details ng-if="openedTaskID == task.id" ng-switch="editedTaskID == task.id"
+        form ng-submit="update(task)" ng-switch-when="true"
           p Edit task
           label Title
           input type="text" ng-model="task.title"
@@ -28,6 +28,9 @@
           br
           input type="submit" value="Save"
           input type="button" ng-click="cancelEdit(task)" value="Cancel"
+        div ng-switch-when="false"
+          p pimpek
+
 
   br
   .button.btn.btn-primary ng-click="showCompletedTasks = !showCompletedTasks" Completed tasks
