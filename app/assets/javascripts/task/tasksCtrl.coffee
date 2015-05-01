@@ -31,16 +31,16 @@ angular.module('SimpleTask').controller 'TasksCtrl', ($scope, $http, List, Task,
       $scope.tasks.push newTask
       $scope.newTask = {}
 
-  $scope.edit = (task) ->
-    $scope.editedTaskID = task.id
-    oldTask = angular.copy(task)
-
-  $scope.cancelEdit = (task) ->
-    index = $scope.tasks.indexOf(task)
-    $scope.tasks.splice(index, 1, oldTask)
-    $scope.editedTaskID = null
-    oldTask = {}
-
+  $scope.edit = (task, $event) ->
+    $event.stopPropagation()
+    if $scope.editedTaskID == task.id
+      index = $scope.tasks.indexOf(task)
+      $scope.tasks.splice(index, 1, oldTask)
+      $scope.editedTaskID = null
+      oldTask = {}
+    else
+      $scope.editedTaskID = task.id
+      oldTask = angular.copy(task)
 
   $scope.update = (task) ->
     Task.update(task).success (updatedTask) ->
