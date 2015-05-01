@@ -11,7 +11,7 @@
           .glyphicon.glyphicon-unchecked ng-click="complete(task)" style="display: inline-block; float: left;"
           | {{ task.title }}
         .task-actions ng-if="openedTaskID == task.id"
-          .glyphicon.glyphicon-cog ng-click="edit(task)"
+          .glyphicon.glyphicon-cog ng-click="edit(task, $event)"
           .glyphicon.glyphicon-trash ng-click="destroy(task)"
 
       div.task-details ng-if="openedTaskID == task.id" ng-switch="editedTaskID == task.id"
@@ -24,8 +24,7 @@
           / input.form-control type="text" datepicker-popup="dd-MMMM-yyyy" ng-model="task.date" is-open="mydp.opened" datepicker-options="dateOptions" show-button-bar="false" close-text="Close"
           / button.btn.btn-default.glyphicon.glyphicon-calendar ng-click="open($event)"
 
-          input type="submit" value="Save"
-          input type="button" ng-click="cancelEdit(task)" value="Cancel"
+          input type="submit" style="display: none;"
 
         div ng-switch-when="false"
           .task-field.task-title-text.form-control
