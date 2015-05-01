@@ -31,10 +31,10 @@
     padding-top: 10px;
     padding-bottom: 10px;
 
-    @include gradient(#606060, #808080);
+    @include gradient(#707070, #909090);
     color: white;
     border: none;
-    box-shadow: 0px 0px 3px #303030 inset;
+    box-shadow: 0px 1px 3px #202020 inset;
   }
   // PLACEHOLDER STYLES
   *::-webkit-input-placeholder {
