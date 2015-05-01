@@ -34,11 +34,8 @@
           .task-field.task-date-text.form-control
             | {{ task.date }}
 
-
-  br
-  .button.btn.btn-primary ng-click="showCompletedTasks = !showCompletedTasks" Completed tasks
-  br
-  br
+  .completed-tasks-button.button.btn.btn-primary ng-click="showCompletedTasks = !showCompletedTasks" ng-show="tasks.length > 0"
+    | Completed tasks
   div ng-show="showCompletedTasks"
     div ng-repeat="task in tasks | filter: { active: false }"
       .btn.btn-default.btn-block.task-item.disabled
