@@ -15,13 +15,18 @@
           .glyphicon.glyphicon-trash ng-click="destroy(task)"
 
       div.task-details ng-if="openedTaskID == task.id" ng-switch="editedTaskID == task.id"
+
         form ng-submit="update(task)" ng-switch-when="true"
-          input.form-control type="text" ng-model="task.title"
-          input.form-control type="text" ng-model="task.description"
-          input.form-control type="text" datepicker-popup="dd-MMMM-yyyy" ng-model="task.date" is-open="mydp.opened" datepicker-options="dateOptions" show-button-bar="false" close-text="Close"
-          button.btn.btn-default.glyphicon.glyphicon-calendar ng-click="open($event)"
+          input.task-title-text.form-control type="text" ng-model="task.title"
+          input.task-description-text.form-control type="text" ng-model="task.description"
+          input.task-date-text.form-control type="text" ng-model="task.date"
+
+          / input.form-control type="text" datepicker-popup="dd-MMMM-yyyy" ng-model="task.date" is-open="mydp.opened" datepicker-options="dateOptions" show-button-bar="false" close-text="Close"
+          / button.btn.btn-default.glyphicon.glyphicon-calendar ng-click="open($event)"
+
           input type="submit" value="Save"
           input type="button" ng-click="cancelEdit(task)" value="Cancel"
+
         div ng-switch-when="false"
           .task-field.task-title-text.form-control
             | {{ task.title }}
