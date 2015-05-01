@@ -7,11 +7,11 @@ div.menu-container ng-show="signedIn()"
     input placeholder="Search" ng-model="searchText"
 
 
-  div.list-item
+  div.list-item ng-class="{ 'active-list': activeSlug == 'all' }"
     div.list-link ui-sref="index.list({ list_slug: 'all' })"
       | All
 
-  div.list-item
+  div.list-item ng-class="{ 'active-list': activeSlug == 'today' }"
     div.list-link ui-sref="index.list({ list_slug: 'today' })"
       | Today
 
