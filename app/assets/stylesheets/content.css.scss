@@ -57,6 +57,7 @@
 
   border-radius: 5px;
   margin-top: 5px;
+  box-shadow: 0px 0px 3px #202020;
 
   .task-main {
     cursor: default;
@@ -97,8 +98,6 @@
 }
 
 .active-task {
-
-
   .task-main {
     border-bottom-right-radius: 0px;
     border-bottom-left-radius: 0px;
