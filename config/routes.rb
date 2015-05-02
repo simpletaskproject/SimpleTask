@@ -7,6 +7,7 @@ Rails.application.routes.draw do
       resources :tasks, only: [:update, :create, :destroy] do
         member do
           put 'complete'
+          put 'uncomplete'
         end
       end
     end
