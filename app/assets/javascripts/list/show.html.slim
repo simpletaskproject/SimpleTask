@@ -38,7 +38,7 @@
     | Completed tasks
   div ng-show="showCompletedTasks"
     div ng-repeat="task in tasks | filter: { active: false }"
-      .btn.btn-default.btn-block.task-item.disabled
+      .btn.btn-default.btn-block.task-item.completed-task-item
         .text-left
-          .glyphicon.glyphicon-check
+          .glyphicon.glyphicon-check ng-click="uncomplete(task)"
           | {{ task.title }}, {{ task.updated_at | date : format : shortDate }}
