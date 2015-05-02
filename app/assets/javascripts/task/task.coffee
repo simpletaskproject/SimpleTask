@@ -11,3 +11,5 @@ angular.module('SimpleTask').service 'Task', ($http, $stateParams) ->
     $http.delete("#{base}/#{task.list.slug}/tasks/#{task.id}")
   complete: (task) ->
     $http.put("#{base}/#{task.list.slug}/tasks/#{task.id}/complete")
+  uncomplete: (task) ->
+    $http.put("#{base}/#{task.list.slug}/tasks/#{task.id}/uncomplete")
