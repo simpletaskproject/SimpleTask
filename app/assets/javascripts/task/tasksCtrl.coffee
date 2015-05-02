@@ -54,7 +54,8 @@ angular.module('SimpleTask').controller 'TasksCtrl', ($scope, $http, List, Task,
       index = $scope.tasks.indexOf(task)
       $scope.tasks.splice(index,1)
 
-  $scope.complete = (task) ->
+  $scope.complete = (task, $event) ->
+    $event.stopPropagation();
     Task.complete(task).success (completedTask) ->
       index = $scope.tasks.indexOf(task)
       $scope.tasks.splice(index, 1)
