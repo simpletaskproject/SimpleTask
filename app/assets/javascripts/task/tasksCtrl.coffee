@@ -16,6 +16,7 @@ angular.module('SimpleTask').controller 'TasksCtrl', ($scope, $http, List, Task,
 
   $scope.openTask = (task) ->
     $scope.openedTaskID = if $scope.openedTaskID == task.id then null else task.id
+    $scope.editedTaskID = null
 
   $scope.open = ($event) ->
     $event.preventDefault()
