@@ -17,9 +17,9 @@
       div.task-details ng-if="openedTaskID == task.id" ng-switch="editedTaskID == task.id"
 
         form ng-submit="update(task)" ng-switch-when="true"
-          input.task-title-text.form-control type="text" ng-model="task.title"
-          input.task-description-text.form-control type="text" ng-model="task.description"
-          input.task-date-text.form-control type="text" ng-model="task.date"
+          input.task-title-text.form-control type="text" ng-model="task.title" placeholder="Title"
+          input.task-description-text.form-control type="text" ng-model="task.description" placeholder="Description"
+          input.task-date-text.form-control type="text" ng-model="task.date" placeholder="Date"
 
           / input.form-control type="text" datepicker-popup="dd-MMMM-yyyy" ng-model="task.date" is-open="mydp.opened" datepicker-options="dateOptions" show-button-bar="false" close-text="Close"
           / button.btn.btn-default.glyphicon.glyphicon-calendar ng-click="open($event)"
