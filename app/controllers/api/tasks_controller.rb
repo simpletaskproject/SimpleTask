@@ -24,6 +24,11 @@ class Api::TasksController < ApplicationController
     render json: task
   end
 
+  def uncomplete
+    task.update!(active: true)
+    render json: task
+  end
+
   private
 
   def task_params
