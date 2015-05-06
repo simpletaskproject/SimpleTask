@@ -17,9 +17,14 @@
       div.task-details ng-if="openedTaskID == task.id" ng-switch="editedTaskID == task.id"
 
         form ng-submit="update(task)" ng-switch-when="true"
-          input.task-title-text.form-control type="text" ng-model="task.title" placeholder="Title"
-          input.task-description-text.form-control type="text" ng-model="task.description" placeholder="Description"
-          input.task-date-text.form-control type="text" ng-model="task.date" placeholder="Date"
+          .row
+            .col-sm-3
+              input.task-title-text.form-control type="text" ng-model="task.title" placeholder="Title"
+            .col-sm-3.col-sm-offset-6
+              input.task-date-text.form-control.text-right type="text" ng-model="task.date" placeholder="Date"
+          .row
+            .col-sm-12
+              input.task-description-text.form-control type="text" ng-model="task.description" placeholder="Description"
 
           / input.form-control type="text" datepicker-popup="dd-MMMM-yyyy" ng-model="task.date" is-open="mydp.opened" datepicker-options="dateOptions" show-button-bar="false" close-text="Close"
           / button.btn.btn-default.glyphicon.glyphicon-calendar ng-click="open($event)"
@@ -27,12 +32,17 @@
           input type="submit" style="display: none;"
 
         div ng-switch-when="false"
-          .task-field.task-title-text.form-control
-            | {{ task.title }}
-          .task-field.task-description-text.form-control ng-show="task.description"
-            | {{ task.description }}
-          .task-field.task-date-text.form-control ng-show="task.date"
-            | {{ task.date }}
+          .row
+            .col-sm-3
+              .task-field.task-title-text.form-control
+                | {{ task.title }}
+            .col-sm-3.col-sm-offset-6.text-right
+              .task-field.task-date-text.form-control ng-show="task.date"
+                | {{ task.date }}
+          .row
+            .col-sm-12
+              .task-field.task-description-text.form-control ng-show="task.description"
+                | {{ task.description }}
 
   .completed-tasks-button.button.btn.btn-primary ng-click="showCompletedTasks = !showCompletedTasks" ng-show="tasks.length > 0"
     | Completed tasks
