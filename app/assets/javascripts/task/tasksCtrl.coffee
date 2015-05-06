@@ -3,7 +3,6 @@ angular.module('SimpleTask').controller 'TasksCtrl', ($scope, $http, List, Task,
   $scope.editedTaskID = null
   oldTask = {}
   specialSlugs = ['all','today']
-  $scope.mydp = {}
   $scope.openedTaskID = null
 
   if specialSlugs.indexOf($stateParams.list_slug) == -1
@@ -17,15 +16,6 @@ angular.module('SimpleTask').controller 'TasksCtrl', ($scope, $http, List, Task,
   $scope.openTask = (task) ->
     $scope.openedTaskID = if $scope.openedTaskID == task.id then null else task.id
     $scope.editedTaskID = null
-
-  $scope.open = ($event) ->
-    $event.preventDefault()
-    $event.stopPropagation()
-    $scope.mydp.opened = true
-
-  $scope.dateOptions =
-    formatYear: 'yy',
-    startingDay: 1
 
   $scope.create = (task) ->
     Task.create($scope.newTask).success (newTask) ->
