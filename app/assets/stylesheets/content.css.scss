@@ -92,7 +92,18 @@
       background-clip: padding-box; /* for IE9+, Firefox 4+, Opera, Chrome */
     }
     .glyphicon {
-      font-size: 1em;
+      font-size: 1.3em;
+    }
+    input.task-date-text {
+      width: 20ch;
+      display: inline-block;
+      float: right;
+    }
+    .datepicker-button {
+      width: initial;
+      display: inline-block;
+      float: right;
+      padding-right: 0px;
     }
   }
 }
