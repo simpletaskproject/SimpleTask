@@ -8,7 +8,7 @@
 
       .btn.btn-default.btn-block.task-main ng-click="openTask(task)"
         .task-title
-          .glyphicon.glyphicon-unchecked popover="Complete task" popover-trigger="mouseenter" popover-placement="bottom" ng-click="complete(task, $event)" style="display: inline-block; float: left;"
+          .glyphicon.glyphicon-unchecked tooltip="Complete task" tooltip-trigger="mouseenter" tooltip-placement="left" ng-click="complete(task, $event)" style="display: inline-block; float: left;"
           | {{ task.title }}
         .task-actions ng-if="openedTaskID == task.id"
           .glyphicon.glyphicon-cog ng-click="edit(task, $event)"
