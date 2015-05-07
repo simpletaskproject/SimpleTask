@@ -24,8 +24,6 @@ angular.module('SimpleTask').controller 'TasksCtrl', ($scope, $http, List, Task,
       $scope.newTask = {}
 
   $scope.edit = (task, $event) ->
-    console.log(task)
-
     if datepickerWatcher
       datepickerWatcher()
     datepickerWatcher = $scope.$watch ( (scope) ->
@@ -45,8 +43,6 @@ angular.module('SimpleTask').controller 'TasksCtrl', ($scope, $http, List, Task,
       oldTask = angular.copy(task)
 
   $scope.update = (task) ->
-    console.log(task)
-
     Task.update(task).success (updatedTask) ->
       index = $scope.tasks.indexOf(task)
       $scope.tasks.splice(index, 1, updatedTask)
