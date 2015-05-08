@@ -1,18 +1,25 @@
 div.container-fluid.user-form
-  form.form-horizontal ng-submit="register()"
+  form.form-horizontal name="userForm" novalidate="true" ng-submit="register()"
     legend REGISTER
-    .form-group
+
+    .form-group ng-class="{ 'has-error' : userForm.email.$invalid && !userForm.email.$pristine}"
       .col-xs-12
-        input.form-control type="email" placeholder="Email" ng-model="user.email"
-    .form-group
+        input.form-control type="email" name="email" placeholder="Email" ng-model="user.email" required="true"
+        p.help-block ng-show="userForm.email.$invalid && !userForm.email.$pristine" Enter a valid email
+
+    .form-group ng-class="{ 'has-error' : userForm.password.$invalid && !userForm.password.$pristine}"
       .col-xs-12
-        input.form-control type="password" placeholder="Password" ng-model="user.password"
-    .form-group
+        input.form-control type="password" name="password" ng-minlength="8" placeholder="Password" ng-model="user.password" required="true"
+        p.help-block ng-show="userForm.password.$error.minlength" Password is too short, 8 characters required
+
+    .form-group ng-class="{ 'has-error' : !(user.password === user.password_confirmation) && !userForm.password_confirmation.$pristine}"
       .col-xs-12
-        input.form-control type="password" placeholder="Password confirmation" ng-model="user.password_confirmation"
+        input.form-control type="password" name="password_confirmation" placeholder="Password confirmation" ng-model="user.password_confirmation" required="true"
+        p.help-block ng-show="!(user.password === user.password_confirmation) && !userForm.password_confirmation.$pristine" Password confirmation does not match
+
     .form-group
       .col-xs-3
-        button.btn.btn-default type="submit" Register
+        button.btn.btn-default type="submit" ng-disabled="userForm.$invalid" Register
     .form-group
       .col-xs-3
         a ui-sref="index.login" Log in?
