@@ -1,25 +1,26 @@
 div.container-fluid.user-form
-  form.form-horizontal name="userForm" novalidate="true" ng-submit="register()"
+  form.form-horizontal name="registrationForm" novalidate="true" ng-submit="register()"
     legend REGISTER
 
-    .form-group ng-class="{ 'has-error' : userForm.email.$invalid && !userForm.email.$pristine}"
+    .form-group ng-class="{ 'has-error' : registrationForm.email.$invalid && !registrationForm.email.$pristine}"
       .col-xs-12
+        p.text-danger ng-show="error" {{ error }}
         input.form-control type="email" name="email" placeholder="Email" ng-model="user.email" required="true"
-        p.help-block ng-show="userForm.email.$invalid && !userForm.email.$pristine" Enter a valid email
+        p.help-block ng-show="registrationForm.email.$invalid && !registrationForm.email.$pristine" Enter a valid email
 
-    .form-group ng-class="{ 'has-error' : userForm.password.$invalid && !userForm.password.$pristine}"
+    .form-group ng-class="{ 'has-error' : registrationForm.password.$invalid && !registrationForm.password.$pristine}"
       .col-xs-12
         input.form-control type="password" name="password" ng-minlength="8" placeholder="Password" ng-model="user.password" required="true"
-        p.help-block ng-show="userForm.password.$error.minlength" Password is too short, 8 characters required
+        p.help-block ng-show="registrationForm.password.$error.minlength" Password is too short, 8 characters required
 
-    .form-group ng-class="{ 'has-error' : !(user.password === user.password_confirmation) && !userForm.password_confirmation.$pristine}"
+    .form-group ng-class="{ 'has-error' : !(user.password === user.password_confirmation) && !registrationForm.password_confirmation.$pristine}"
       .col-xs-12
         input.form-control type="password" name="password_confirmation" placeholder="Password confirmation" ng-model="user.password_confirmation" required="true"
-        p.help-block ng-show="!(user.password === user.password_confirmation) && !userForm.password_confirmation.$pristine" Password confirmation does not match
+        p.help-block ng-show="!(user.password === user.password_confirmation) && !registrationForm.password_confirmation.$pristine" Password confirmation does not match
 
     .form-group
       .col-xs-3
-        button.btn.btn-default type="submit" ng-disabled="userForm.$invalid" Register
+        button.btn.btn-default type="submit" ng-disabled="registrationForm.$invalid || !(user.password === user.password_confirmation)" Register
     .form-group
       .col-xs-3
         a ui-sref="index.login" Log in?

@@ -5,13 +5,13 @@ angular.module('SimpleTask').controller 'UserCtrl', ($scope, $window, $state, Au
     .then ->
       ($state.go 'index', {}, {reload: true})
     .catch ->
-      $scope.error = "ERROR"
-      console.log $scope.error
+      $scope.error = "There is no such account, try again"
 
   $scope.loginGithub = ->
     $window.location.href = "http://localhost:3000/users/auth/github"
-    #$state.go 'index', {}, {reload: true}
 
   $scope.register = ->
     Auth.register($scope.user).then ->
       $state.go 'index'
+    .catch ->
+      $scope.error = "The email adress is being used"
