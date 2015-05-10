@@ -8,7 +8,7 @@ angular.module('SimpleTask').controller 'UserCtrl', ($scope, $window, $state, Au
       $scope.error = "There is no such account, try again"
 
   $scope.loginGithub = ->
-    $window.location.href = "http://localhost:3000/users/auth/github"
+    $window.location.href = "http://simpletask.herokuapp.com/users/auth/github"
 
   $scope.register = ->
     Auth.register($scope.user).then ->
