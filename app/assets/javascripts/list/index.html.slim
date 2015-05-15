@@ -33,9 +33,9 @@ div.menu-container ng-show="signedIn()"
         div.glyphicon.glyphicon-wrench.edit-button ng-click="cancelEdit(list)"
 
   div.new-list
-    form.new-list-form ng-show="newList" ng-submit="create(list)"
-      input placeholder="New list" type="text" ng-model="list.title"
-    span.glyphicon.glyphicon-remove.new-list-button ng-click="newList = false" ng-show="newList"
-    span.glyphicon.glyphicon-plus.new-list-button ng-click="newList = true" ng-hide="newList"
+    form.new-list-form ng-show="newListForm" ng-submit="create(newList)"
+      input placeholder="New list" type="text" ng-model="newList.title"
+    span.glyphicon.glyphicon-remove.new-list-button ng-click="newListForm = false" ng-show="newListForm"
+    span.glyphicon.glyphicon-plus.new-list-button ng-click="newListForm = true" ng-hide="newListForm"
 
   p.separator-label Don't forget a thing!
