@@ -1,7 +1,7 @@
 class List < ActiveRecord::Base
   extend FriendlyId
 
-  validates :title, presence: true
+  validates :title, presence: true, title_not_reserved: true
   validates :user_id, presence: true
   validates_uniqueness_of :title, scope: :user
   belongs_to :user
