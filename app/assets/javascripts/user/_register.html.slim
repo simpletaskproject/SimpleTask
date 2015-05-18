@@ -1,26 +1,71 @@
 div.container-fluid.user-form
-  form.form-horizontal name="registrationForm" novalidate="true" ng-submit="register()"
+  form.form-horizontal(
+    name="registrationForm"
+    novalidate="true"
+    ng-submit="register()"
+    )
     legend REGISTER
 
-    .form-group ng-class="{ 'has-error' : registrationForm.email.$invalid && !registrationForm.email.$pristine}"
+    .form-group ng-class="{ 'has-error' : registrationForm.email.$invalid &&
+                                          !registrationForm.email.$pristine }"
       .col-xs-12
         p.text-danger ng-show="error" {{ error }}
-        input.form-control type="email" name="email" placeholder="Email" ng-model="user.email" required="true"
-        p.help-block ng-show="registrationForm.email.$invalid && !registrationForm.email.$pristine" Enter a valid email
+        input.form-control(
+          type="email"
+          name="email"
+          placeholder="Email"
+          ng-model="user.email"
+          required="true"
+        )
+        p.help-block(
+          ng-show="registrationForm.email.$invalid &&
+                   !registrationForm.email.$pristine"
+          )
+          | Enter a valid email
 
-    .form-group ng-class="{ 'has-error' : registrationForm.password.$invalid && !registrationForm.password.$pristine}"
+    .form-group(
+      ng-class="{ 'has-error' : registrationForm.password.$invalid &&
+                                !registrationForm.password.$pristine }"
+    )
       .col-xs-12
-        input.form-control type="password" name="password" ng-minlength="8" placeholder="Password" ng-model="user.password" required="true"
-        p.help-block ng-show="registrationForm.password.$error.minlength" Password is too short, 8 characters required
+        input.form-control(
+          type="password"
+          name="password"
+          ng-minlength="8"
+          placeholder="Password"
+          ng-model="user.password"
+          required="true"
+        )
+        p.help-block(
+          ng-show="registrationForm.password.$error.minlength"
+          )
+          | Password is too short, 8 characters required
 
-    .form-group ng-class="{ 'has-error' : !(user.password === user.password_confirmation) && !registrationForm.password_confirmation.$pristine}"
+    .form-group(
+      ng-class="{ 'has-error' : !registrationForm.password_confirmation.$pristine &&
+                                !passwordsMatch() }"
+    )
       .col-xs-12
-        input.form-control type="password" name="password_confirmation" placeholder="Password confirmation" ng-model="user.password_confirmation" required="true"
-        p.help-block ng-show="!(user.password === user.password_confirmation) && !registrationForm.password_confirmation.$pristine" Password confirmation does not match
+        input.form-control(
+          type="password"
+          name="password_confirmation"
+          placeholder="Password confirmation"
+          ng-model="user.password_confirmation"
+          required="true"
+        )
+        p.help-block(
+          ng-show="!registrationForm.password_confirmation.$pristine &&
+                   !passwordsMatch()"
+          )
+          | Password confirmation does not match
 
     .form-group
       .col-xs-3
-        button.btn.btn-default type="submit" ng-disabled="registrationForm.$invalid || !(user.password === user.password_confirmation)" Register
+        button.btn.btn-default(
+          type="submit"
+          ng-disabled="registrationForm.$invalid || !(passwordsMatch())"
+          )
+          | Register
     .form-group
       .col-xs-3
         a ui-sref="index.login" Log in?
