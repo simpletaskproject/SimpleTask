@@ -4,16 +4,34 @@ div.container-fluid.user-form
     .form-group
       .col-xs-12
         p.text-danger ng-show="error" {{ error }}
-        input.form-control type="email" placeholder="Email" ng-model="user.email" required="true"
+        input.form-control(
+          type="email"
+          placeholder="Email"
+          ng-model="user.email"
+          required="true"
+        )
     .form-group
       .col-xs-12
-        input.form-control type="password" placeholder="Password" ng-model="user.password" required="true"
+        input.form-control(
+          type="password"
+          placeholder="Password"
+          ng-model="user.password"
+          required="true"
+        )
     .form-group
       .col-xs-3
-        button.btn.btn-default type="submit" ng-disabled="loginForm.$invalid" Log In
+        button.btn.btn-default(
+          type="submit"
+          ng-disabled="loginForm.$invalid"
+        )
+          | Log In
     .form-group
       .col-xs-3
-        button.btn.btn-default type="button" ng-click="loginGithub()" Log in with github
+        button.btn.btn-default(
+          type="button"
+          ng-click="loginGithub()"
+        )
+          | Log in with github
     .form-group
       .col-xs-3
         a ui-sref="index.register" Register?
