@@ -41,7 +41,8 @@
                 | {{ task.title }}
             .col-sm-3.col-sm-offset-6.text-right
               .task-field.task-date-text.form-control ng-show="task.date"
-                | {{ task.date | date:'fullDate' }}
+                p ng-class="{ 'text-danger': late(task) }"
+                  | {{ task.date | date:'fullDate' }}
           .row
             .col-sm-12
               .task-field.task-description-text.form-control ng-show="task.description"

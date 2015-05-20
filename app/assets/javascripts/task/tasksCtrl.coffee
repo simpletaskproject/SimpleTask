@@ -63,3 +63,11 @@ angular.module('SimpleTask').controller 'TasksCtrl', ($scope, $http, List, Task,
     Task.uncomplete(task).success (uncompletedTask) ->
       index = $scope.tasks.indexOf(task)
       $scope.tasks.splice(index, 1, uncompletedTask)
+
+  $scope.late = (task) ->
+    if task.date
+      taskDate = new Date(task.date)
+      yesterdaysDate = new Date()
+      yesterdaysDate.setDate(yesterdaysDate.getDate() - 1)
+      taskDate < yesterdaysDate
+
