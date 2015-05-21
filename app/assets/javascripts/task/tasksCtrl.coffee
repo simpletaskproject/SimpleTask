@@ -1,4 +1,4 @@
-angular.module('SimpleTask').controller 'TasksCtrl', ($scope, $http, List, Task, Auth, $stateParams) ->
+angular.module('SimpleTask').controller 'TasksCtrl', ($scope, $filter, $http, List, Task, Auth, $stateParams) ->
   $scope.newTask = {}
   $scope.editedTaskID = null
   oldTask = {}
@@ -10,9 +10,12 @@ angular.module('SimpleTask').controller 'TasksCtrl', ($scope, $http, List, Task,
     List.show($stateParams.list_slug).success (list) ->
       $scope.list = list
       $scope.tasks = $scope.list.tasks
+      $scope.completedTasksNumber = $filter('filter')($scope.tasks,{ active: false}).length
+
   else
     Task.index($stateParams.list_slug).success (tasks) ->
       $scope.tasks = tasks
+      $scope.completedTasksNumber = $filter('filter')($scope.tasks,{ active: false}).length
 
   $scope.openTask = (task) ->
     $scope.openedTaskID = if $scope.openedTaskID == task.id then null else task.id
@@ -58,11 +61,13 @@ angular.module('SimpleTask').controller 'TasksCtrl', ($scope, $http, List, Task,
     Task.complete(task).success (completedTask) ->
       index = $scope.tasks.indexOf(task)
       $scope.tasks.splice(index, 1, completedTask)
+      $scope.completedTasksNumber += 1
 
   $scope.uncomplete = (task) ->
     Task.uncomplete(task).success (uncompletedTask) ->
       index = $scope.tasks.indexOf(task)
       $scope.tasks.splice(index, 1, uncompletedTask)
+      $scope.completedTasksNumber -= 1
 
   $scope.late = (task) ->
     if task.date
@@ -70,4 +75,7 @@ angular.module('SimpleTask').controller 'TasksCtrl', ($scope, $http, List, Task,
       yesterdaysDate = new Date()
       yesterdaysDate.setDate(yesterdaysDate.getDate() - 1)
       taskDate < yesterdaysDate
+
+
+
 
